@@ -55,11 +55,11 @@
             </li>
 
 
-            <li class="{{ Route::is('setting.index') || Route::is('setting.*') ? 'active' : '' }}">
+            {{-- <li class="{{ Route::is('setting.index') || Route::is('setting.*') ? 'active' : '' }}">
                 <a href="{{ route('setting.index') }}">
                     <i class="fa fa-briefcase"></i> <span>Setting</span>
                 </a>
-            </li>
+            </li> --}}
 
         </ul>
     </section>

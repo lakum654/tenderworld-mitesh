@@ -10,6 +10,7 @@ use App\Http\Controllers\admin\SitemapController;
 use App\Http\Controllers\front\IndexController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -68,6 +69,54 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('setting', [SettingController::class, 'index'])->name('setting.index');
     Route::put('setting/{id}', [SettingController::class, 'update'])->name('setting.update');
+});
+
+
+Route::get('run-command/{name}', function($name) {
+    if ($name === 'storage:link' && !function_exists('symlink')) {
+        return response()->json([
+            'error' => 'symlink() is not supported on this server.'
+        ], 500);
+    }
+
+    try {
+        Artisan::call($name);
+        return response()->json([
+            'output' => Artisan::output()
+        ]);
+    } catch (Exception $e) {
+        return response()->json([
+            'error' => 'Command failed: ' . $e->getMessage()
+        ], 500);
+    }
+});
+
+
+Route::get('copy-storage-files', function () {
+    $source = storage_path('app/public');
+    $destination = public_path('storage');
+
+    if (!file_exists($destination)) {
+        mkdir($destination, 0755, true);
+    }
+
+    $files = new \RecursiveIteratorIterator(
+        new \RecursiveDirectoryIterator($source, \RecursiveDirectoryIterator::SKIP_DOTS),
+        \RecursiveIteratorIterator::SELF_FIRST
+    );
+
+    foreach ($files as $file) {
+        $destPath = $destination . DIRECTORY_SEPARATOR . $files->getSubPathName();
+        if ($file->isDir()) {
+            if (!file_exists($destPath)) {
+                mkdir($destPath, 0755, true);
+            }
+        } else {
+            copy($file, $destPath);
+        }
+    }
+
+    return 'Files have been copied to public/storage';
 });
 
 
