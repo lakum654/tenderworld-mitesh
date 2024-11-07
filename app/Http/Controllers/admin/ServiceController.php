@@ -37,7 +37,7 @@ class ServiceController extends Controller
             ->addIndexColumn()
             ->addColumn('action', function ($row) {
                 $editUrl = route('services.edit', encrypt($row->id));
-                $deleteUrl = route('services.delete', encrypt($row->id));
+                $deleteUrl = route('servicesss.delete', encrypt($row->id));
                 $statusUrl = route('services.changeStatus', encrypt($row->id));
                 $btn = '';
                 $btn .= '<a href="' . $editUrl . '" class="edit btn btn-primary btn-sm" style="margin-left:5px;"><i class="fa fa-pencil"> </i> Edit</a>';

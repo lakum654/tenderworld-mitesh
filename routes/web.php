@@ -47,9 +47,9 @@ Route::group(['prefix' => 'admin'], function () {
 Route::view('/admin', 'admin.index')->middleware('auth');
 Route::group(['prefix' => 'admin', 'middleware' => ['auth'],], function () {
     Route::get('services/data', [ServiceController::class, 'getData'])->name('services.data');
-    Route::get('/delete/{id}', [ServiceController::class, 'destroy'])->name('services.delete');
     Route::get('/changeStatus/{id}', [ServiceController::class, 'changeStatus'])->name('services.changeStatus');
     Route::resource('services', ServiceController::class);
+    Route::get('service/delete/{id}', [ServiceController::class, 'destroy'])->name('servicesss.delete');
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth'],], function () {
