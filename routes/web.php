@@ -7,6 +7,7 @@ use App\Http\Controllers\admin\QuestionController;
 use App\Http\Controllers\admin\ServiceController;
 use App\Http\Controllers\admin\SettingController;
 use App\Http\Controllers\admin\SitemapController;
+use App\Http\Controllers\admin\TenderController;
 use App\Http\Controllers\front\IndexController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -58,6 +59,16 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'],], function () {
     Route::get('contacts/data', [ContactController::class, 'getData'])->name('contacts.data');
 });
 
+
+Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
+    Route::get('tender/data', [TenderController::class, 'getData'])->name('tender.data');
+    Route::get('tender', [TenderController::class, 'index'])->name('tender.index');
+    Route::get('tender/create', [TenderController::class, 'create'])->name('tender.create');
+    Route::post('tender/store', [TenderController::class, 'store'])->name('tender.store');
+    Route::get('tender/{id}/edit', [TenderController::class, 'edit'])->name('tender.edit');
+    Route::post('tender/update', [TenderController::class, 'update'])->name('tender.update');
+    Route::get('tender/delete/{id}', [TenderController::class, 'destroy'])->name('tender.delete');
+});
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('profile', [ProfileController::class, 'edit'])->name('profile.index');

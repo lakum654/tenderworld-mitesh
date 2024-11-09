@@ -55,6 +55,12 @@
             </li>
 
 
+            <li class="{{ Route::is('tender.index') || Route::is('tender.*') ? 'active' : '' }}">
+                <a href="{{ route('tender.index') }}">
+                    <i class="fa fa-briefcase"></i> <span>Tenders</span>
+                </a>
+            </li>
+
             {{-- <li class="{{ Route::is('setting.index') || Route::is('setting.*') ? 'active' : '' }}">
                 <a href="{{ route('setting.index') }}">
                     <i class="fa fa-briefcase"></i> <span>Setting</span>

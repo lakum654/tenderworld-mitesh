@@ -53,12 +53,8 @@ class ServiceController extends Controller
                 return $btn;
             })
 
-            ->editColumn('content', function ($row) {
+            ->editColumn('work', function ($row) {
                 return strip_tags(Str::limit($row->content, 150));
-            })
-
-            ->editColumn('status', function ($row) {
-                return $row->status == 1 ? 'Active' : 'Deactive';
             })
 
             ->rawColumns(['action'])
