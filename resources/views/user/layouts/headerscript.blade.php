@@ -19,3 +19,4 @@
 
 <!-- Template Main CSS File -->
 <link href="{{ asset('public/assets/css/main.css') }}" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">

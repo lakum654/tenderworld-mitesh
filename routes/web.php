@@ -27,7 +27,7 @@ use Illuminate\Support\Facades\Auth;
 
 Route::view('/', 'welcome')->name('home');
 Route::view('/gem-registration', 'user.gem-registration')->name('gem-registration');
-Route::view('/service', 'user.service')->name('service');
+Route::get('/service', [IndexController::class,'tender'])->name('service');
 Route::view('/certificate', 'user.certificate')->name('certificate');
 Route::view('/contact', 'user.contact')->name('contact');
 Route::post('/contact', [IndexController::class,'contactStore'])->name('contact.store');

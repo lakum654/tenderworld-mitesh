@@ -4,6 +4,7 @@ namespace App\Http\Controllers\front;
 
 use App\Http\Controllers\Controller;
 use App\Models\Contact;
+use App\Models\Tender;
 use Exception;
 use Illuminate\Http\Request;
 
@@ -23,5 +24,10 @@ class IndexController extends Controller
         } catch(Exception $e) {
             session()->flash('error',$e->getMessage());
         }
+    }
+
+    public function tender() {
+        $tenders = Tender::all();
+        return view('user.tender',compact('tenders'));
     }
 }
