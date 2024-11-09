@@ -106,7 +106,7 @@ class TenderController extends Controller
         $headerErrors = $this->validateHeader($rows[0][0], $expectedHeader);
         if (!empty($headerErrors)) {
             $errorColumns = implode(', ', $headerErrors);
-            Helper::successMsg('custom', "Tender file is not valid. Please correct the following columns: $errorColumns.");
+            Helper::successMsg('error', "Tender file is not valid. Please correct the following columns: $errorColumns.");
             return redirect()->back();
         }
 

@@ -67,6 +67,10 @@
             @if (Session::has('message'))
                 swal("{{ $moduleName }}", "{{ Session::get('message') }}", "success")
             @endif
+
+            @if (Session::has('error'))
+                swal("{{ $moduleName }}", "{{ Session::get('error') }}", "error")
+            @endif
         });
 
         $(function() {

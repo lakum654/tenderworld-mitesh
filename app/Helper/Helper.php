@@ -24,6 +24,8 @@ class Helper
             session()->flash('message', $msg . ' Deactive Successfully.');
         } else if ($type == 'custom') {
             session()->flash('message', $msg);
+        } else if ($type == 'error') {
+            session()->flash('error', $msg);
         }
     }
 

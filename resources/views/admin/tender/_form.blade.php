@@ -31,7 +31,7 @@
                         <!-- Category -->
                         <div class="col-md-6 col-sm-12">
                             <label for="category_id">Category: *</label>
-                            <select name="category_id" class="form-control" id="category_id">
+                            <select name="category_id" class="form-control select2" id="category_id">
                                 <option value="">Select Category</option>
                                 @foreach($categories as $category)
                                     <option value="{{ $category->id }}" {{ $tender->category_id == $category->id ? 'selected' : '' }}>
