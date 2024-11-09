@@ -66,7 +66,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('tender/create', [TenderController::class, 'create'])->name('tender.create');
     Route::post('tender/store', [TenderController::class, 'store'])->name('tender.store');
     Route::get('tender/{id}/edit', [TenderController::class, 'edit'])->name('tender.edit');
-    Route::post('tender/update', [TenderController::class, 'update'])->name('tender.update');
+    Route::post('tender/update/{id}', [TenderController::class, 'update'])->name('tender.update');
     Route::get('tender/delete/{id}', [TenderController::class, 'destroy'])->name('tender.delete');
 });
 

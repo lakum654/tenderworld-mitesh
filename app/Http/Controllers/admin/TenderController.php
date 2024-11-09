@@ -58,11 +58,11 @@ class TenderController extends Controller
             })
 
             ->editColumn('end_date', function ($row) {
-                return date('d-m-Y',strtotime($row->start_date));
+                return date('d-m-Y',strtotime($row->end_date));
             })
 
             ->editColumn('tender_open', function ($row) {
-                return date('d-m-Y',strtotime($row->start_date));
+                return date('d-m-Y',strtotime($row->tender_open));
             })
 
             ->rawColumns(['action'])
@@ -178,6 +178,63 @@ class TenderController extends Controller
     {
         return Carbon::instance(Date::excelToDateTimeObject($excelDate))->format('Y-m-d');
     }
+
+    public function edit($id)
+    {
+        $this->data['tender'] = Tender::find(decrypt($id));
+        $this->data['categories'] = TenderCategory::all();
+        return view($this->data['view'] . '_form', $this->data);
+    }
+
+    public function update(Request $request, $id){
+    // Find the tender by ID
+    $tender = Tender::findOrFail($id);
+
+    // Validate the request data
+    $request->validate([
+        'category_id' => 'required|exists:tender_categories,id',
+        'bid_no' => 'required|string',
+        'work' => 'required|string',
+        'tender_id' => 'required|string',
+        'city' => 'required|string',
+        'state' => 'required|string',
+        'department' => 'required|string',
+        'emd_exemption' => 'nullable|string',
+        'mse_exemption' => 'nullable|string',
+        'tender_value' => 'nullable|string',
+        'tender_emd' => 'nullable|string',
+        'tender_fee' => 'nullable|numeric',
+        'start_date' => 'nullable|date',
+        'end_date' => 'nullable|date',
+        'tender_open' => 'nullable|date',
+    ]);
+
+
+    // dd($request->all());
+    // Update the tender with the validated data
+    $tender->update([
+        'category_id' => $request->category_id,
+        'bid_no' => $request->bid_no,
+        'work' => $request->work,
+        'tender_id' => $request->tender_id,
+        'city' => $request->city,
+        'state' => $request->state,
+        'department' => $request->department,
+        'emd_exemption' => $request->emd_exemption,
+        'mse_exemption' => $request->mse_exemption,
+        'tender_value' => $request->tender_value,
+        'tender_emd' => $request->tender_emd,
+        'tender_fee' => $request->tender_fee,
+        'start_date' => $request->start_date,
+        'end_date' => $request->end_date,
+        'tender_open' => $request->tender_open,
+    ]);
+
+    // Success message and redirect
+    Helper::successMsg('custom', 'Tender updated successfully.');
+    return redirect()->route('tender.index');
+}
+
 
     public function destroy($id)
     {
