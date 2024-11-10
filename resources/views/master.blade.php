@@ -71,6 +71,24 @@
             @if (Session::has('error'))
                 swal("{{ $moduleName }}", "{{ Session::get('error') }}", "error")
             @endif
+
+            $(document).on('click', '.delete', function(e) {
+                e.preventDefault();
+                var linkURL = $(this).attr("href");
+                Swal.fire({
+                    title: 'Are you sure want to Delete?',
+                    text: "As that can be undone by doing reverse.",
+                    icon: 'success',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes'
+                }).then((result) => {
+                    if (result.value) {
+                        window.location.href = linkURL;
+                    }
+                });
+            });
         });
 
         $(function() {

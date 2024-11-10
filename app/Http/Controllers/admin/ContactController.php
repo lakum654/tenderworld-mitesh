@@ -34,7 +34,7 @@ class ContactController extends Controller
             ->addColumn('action', function ($row) {
                 $btn = "";
                 $deleteUrl = route('contacts.delete', encrypt($row->id));
-                $btn .= '<a href="' . $deleteUrl . '" class="edit btn btn-danger btn-sm" style="margin-left:5px;"> <i class="fa fa-trash" /> </i> Delete</a>';
+                $btn .= '<a href="' . $deleteUrl . '" class="edit btn btn-danger btn-sm delete" style="margin-left:5px;"> <i class="fa fa-trash" /> </i> Delete</a>';
                 return $btn;
             })
 

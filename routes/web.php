@@ -12,6 +12,7 @@ use App\Http\Controllers\front\AuthController;
 use App\Http\Controllers\front\IndexController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 
@@ -77,6 +78,16 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::get('tender/{id}/edit', [TenderController::class, 'edit'])->name('tender.edit');
     Route::post('tender/update/{id}', [TenderController::class, 'update'])->name('tender.update');
     Route::get('tender/delete/{id}', [TenderController::class, 'destroy'])->name('tender.delete');
+});
+
+Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
+    Route::get('users/data', [UserController::class, 'getData'])->name('users.data');
+    Route::get('users', [UserController::class, 'index'])->name('users.index');
+    Route::get('users/create', [UserController::class, 'create'])->name('users.create');
+    Route::post('users/store', [UserController::class, 'store'])->name('users.store');
+    Route::get('user/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
+    Route::post('user/update/{id}', [UserController::class, 'update'])->name('users.update');
+    Route::get('users/delete/{id}', [UserController::class, 'destroy'])->name('users.delete');
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {

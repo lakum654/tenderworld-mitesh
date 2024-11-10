@@ -49,7 +49,7 @@ class ServiceController extends Controller
                     $btn .= '<a href="' . $statusUrl . '" class="edit btn btn-success btn-sm" style="margin-left:5px;"><i class="fa fa-check" > </i> Active</a>';
                 }
 
-                $btn .= '<a href="' . $deleteUrl . '" class="edit btn btn-danger btn-sm" style="margin-left:5px;"> <i class="fa fa-trash" /> </i> Delete</a>';
+                $btn .= '<a href="' . $deleteUrl . '" class="edit btn btn-danger btn-sm delete" style="margin-left:5px;"> <i class="fa fa-trash" /> </i> Delete</a>';
                 return $btn;
             })
 

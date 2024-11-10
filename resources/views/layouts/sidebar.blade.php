@@ -42,6 +42,13 @@
           </a>
         </li> --}}
 
+
+        <li class="{{ Route::is('users.index') || Route::is('users.*') ? 'active' : '' }}">
+            <a href="{{ route('users.index') }}">
+                <i class="fa fa-users"></i> <span>Users</span>
+            </a>
+        </li>
+
             <li class="{{ Route::is('services.index') || Route::is('services.*') ? 'active' : '' }}">
                 <a href="{{ route('services.index') }}">
                     <i class="fa fa-briefcase"></i> <span>Services</span>
@@ -50,10 +57,16 @@
 
             <li class="{{ Route::is('contacts.index') || Route::is('contacts.*') ? 'active' : '' }}">
                 <a href="{{ route('contacts.index') }}">
-                    <i class="fa fa-users"></i> <span>Contact Us</span>
+                    <i class="fa fa-envelope"></i> <span>Contact Us</span>
                 </a>
             </li>
 
+
+            <li class="{{ Route::is('tender.index') || Route::is('tender.*') ? 'active' : '' }}">
+                <a href="{{ route('tender.index') }}">
+                    <i class="fa fa-briefcase"></i> <span>Tenders</span>
+                </a>
+            </li>
 
             <li class="{{ Route::is('tender.index') || Route::is('tender.*') ? 'active' : '' }}">
                 <a href="{{ route('tender.index') }}">
