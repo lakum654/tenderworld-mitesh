@@ -13,7 +13,7 @@
             <ul>
                 <li><a href="{{ route('home') }}">Home</a></li>
                 <li><a href="{{ route('gem-registration')}}">Gem Registration</a></li>
-                <li><a href="{{ route('service') }}">Tender Services</a></li>
+                <li><a href="{{ route('front.tender') }}">Tender Services</a></li>
                 <li><a href="{{ route('certificate')}}">Certificate</a></li>
                 <li><a href="{{ route('contact')}}">Contact Us</a></li>
                 <li><a href="{{ route('about')}}">About Us</a></li>

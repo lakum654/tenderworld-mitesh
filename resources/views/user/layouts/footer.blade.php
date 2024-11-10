@@ -38,7 +38,7 @@
                         <a href="{{ route('home') }}"><strong style="color: gray;">Home</strong></a><br>
                         <a href="{{ route('gem-registration') }}"><strong style="color: gray;">Gem
                                 Registration</strong></a><br>
-                        <a href="{{ route('service') }}"><strong style="color: gray;">Tender Services</strong></a><br>
+                        <a href="{{ route('front.tender') }}"><strong style="color: gray;">Tender Services</strong></a><br>
                         <a href="{{ route('certificate') }}"><strong style="color: gray;">Certificate</strong></a><br>
                         <a href="{{ route('contact') }}"><strong style="color: gray;">Contact Us</strong></a><br>
                         <a href="{{ route('about') }}"><strong style="color: gray;">About Us</strong></a><br>
