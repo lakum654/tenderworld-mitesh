@@ -7,11 +7,12 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>@yield('title','Tenders World - Home')</title>
+    <title>@yield('title', 'Tenders World - Home')</title>
     <meta content="Tender World Service" name="description">
     <meta content="Tender,World,Gujarat,Services" name="keywords">
 
     @include('user.layouts.headerscript')
+    @stack('css')
 </head>
 
 <body>
@@ -35,7 +36,35 @@
 
     <div id="preloader"></div>
 
+    @include('user.register')
+    @include('user.login');
     @include('user.layouts.footerscript')
+
+
+
+    <script>
+        function openLoginModal() {
+            $('#registrationModal').modal('hide');
+            $('#loginModal').modal('show');
+        }
+
+        function openRegisterModal() {
+            $('#loginModal').modal('hide');
+            $('#registrationModal').modal('show');
+        }
+
+        // Keep the modals open if there are validation errors
+        @if ($errors->any() && session('error_type') === 'login')
+            $(document).ready(function() {
+                $('#loginModal').modal('show');
+            });
+        @elseif ($errors->any() && session('error_type') === 'register')
+            $(document).ready(function() {
+                $('#registrationModal').modal('show');
+            });
+        @endif
+    </script>
+    @stack('scripts')
 
 </body>
 

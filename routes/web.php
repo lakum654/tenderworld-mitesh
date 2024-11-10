@@ -8,6 +8,7 @@ use App\Http\Controllers\admin\ServiceController;
 use App\Http\Controllers\admin\SettingController;
 use App\Http\Controllers\admin\SitemapController;
 use App\Http\Controllers\admin\TenderController;
+use App\Http\Controllers\front\AuthController;
 use App\Http\Controllers\front\IndexController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -34,9 +35,14 @@ Route::view('/about', 'user.about')->name('about');
 
 Route::get('/tenders', [IndexController::class,'tender'])->name('front.tender');
 Route::get('/tender/{id}', [IndexController::class,'tenderShow'])->name('front.tender.show');
-Route::get('/tender/download', [IndexController::class,'tenderShow'])->name('front.tender.download');
+Route::get('/tender/download/{id}', [IndexController::class,'tenderDownload'])->name('front.tender.download');
 Route::post('/tender/inquiry', [IndexController::class,'tenderInquiry'])->name('front.tender.inquiry');
 Route::get('/post/{id}/{slug}', [HomeController::class, 'single'])->name('front.single');
+
+
+Route::post('user/register',[AuthController::class,'register'])->name('front.auth.register');
+Route::post('user/login',[AuthController::class,'login'])->name('front.auth.login');
+Route::post('user/logout', [AuthController::class, 'logout'])->name('front.auth.logout');
 // Route::get('/', function () {
 //     return view('auth/login');
 // })->middleware('guest');

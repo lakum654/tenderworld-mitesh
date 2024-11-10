@@ -44,4 +44,8 @@ class IndexController extends Controller
         session()->flash('success','Your inquiry has been sent. Thank you!');
         return back();
     }
+
+    public function tenderDownload($id) {
+        return 'Tender Document Download Code Is Pendding';
+    }
 }

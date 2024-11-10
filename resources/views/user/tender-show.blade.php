@@ -60,8 +60,15 @@
                             <strong>Tender Documents</strong>
                         </div>
                         <div class="card-body text-center">
-                            <a href="{{ route('front.tender.download', $tender->id) }}" class="btn btn-danger">Download
+                            @if(!Auth::check())
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                data-bs-target="#registrationModal" id="registrationModalBtn">
+                                Download Document
+                            </button>
+                            @else
+                             <a href="{{ route('front.tender.download', $tender->id) }}" class="btn btn-danger">Download
                                 Document</a>
+                            @endif
                         </div>
                     </div>
 
@@ -87,7 +94,7 @@
                         <div class="card-body">
                             <form action="{{ route('front.tender.inquiry') }}" method="POST" class="php-email-form">
                                 @csrf
-                                <input type="hidden" id="tender_id" name="tender_id" value="{{$tender->id}}">
+                                <input type="hidden" id="tender_id" name="tender_id" value="{{ $tender->id }}">
                                 <div class="form-group">
                                     <label for="name">Name</label>
                                     <input type="text" class="form-control" id="name" name="name" required>
@@ -114,8 +121,10 @@
                             </form>
 
                             <br>
-                            @if(session()->has('success'))
-                                <div class="sent-message" style="color: #fff;background: #059652;text-align: center;padding: 15px;font-weight: 600;">{{ session()->get('success')}}</div>
+                            @if (session()->has('success'))
+                                <div class="sent-message"
+                                    style="color: #fff;background: #059652;text-align: center;padding: 15px;font-weight: 600;">
+                                    {{ session()->get('success') }}</div>
                             @endif
                         </div>
                     </div>
