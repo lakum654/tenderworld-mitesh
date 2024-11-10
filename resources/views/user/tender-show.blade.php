@@ -87,6 +87,7 @@
                         <div class="card-body">
                             <form action="{{ route('front.tender.inquiry') }}" method="POST" class="php-email-form">
                                 @csrf
+                                <input type="hidden" id="tender_id" name="tender_id" value="{{$tender->id}}">
                                 <div class="form-group">
                                     <label for="name">Name</label>
                                     <input type="text" class="form-control" id="name" name="name" required>

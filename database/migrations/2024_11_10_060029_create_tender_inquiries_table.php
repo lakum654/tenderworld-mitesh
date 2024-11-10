@@ -16,6 +16,7 @@ class CreateTenderInquiriesTable extends Migration
         Schema::create('tender_inquiries', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->unsignedBigInteger('tender_id');
             $table->string('company_name')->nullable();
             $table->string('email');
             $table->string('mobile');
