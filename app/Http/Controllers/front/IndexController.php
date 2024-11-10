@@ -30,4 +30,9 @@ class IndexController extends Controller
         $tenders = Tender::all();
         return view('user.tender',compact('tenders'));
     }
+
+    public function tenderShow($id) {
+        $tender = Tender::find($id);
+        return view('user.tender-show',compact('tender'));
+    }
 }

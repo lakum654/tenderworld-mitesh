@@ -28,7 +28,7 @@
                                     <strong>Due Date:</strong> {{ \Carbon\Carbon::parse($tender->end_date)->format('M d, Y') }}<br>
                                     <strong>Tender Value:</strong> {{ $tender->tender_value ?? 'Refer Document' }}
                                 </p>
-                                <a href="{{ route('tender.index', $tender->id) }}" class="btn btn-outline-primary">View Documents</a>
+                                <a href="{{ route('front.tender.show', $tender->id) }}" class="btn btn-outline-primary">View Documents</a>
                                 {{-- <a href="https://wa.me/?text={{ urlencode('Check out this tender: '.$tender->work) }}" target="_blank" class="btn btn-outline-success"><i class="fa fa-whatsapp"></i></a> --}}
                             </div>
                         </div>
