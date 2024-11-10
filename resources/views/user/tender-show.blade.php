@@ -27,7 +27,7 @@
                             <strong>Tender Basic Details</strong>
                         </div>
                         <div class="card-body">
-                            <p><strong>T18 Ref No:</strong> {{ $tender->tender_id }}</p>
+                            <p><strong>Ref No:</strong> {{ $tender->tender_id }}</p>
                             <p><strong>Tender ID:</strong> {{ $tender->tender_id }}</p>
                             <p><strong>Tender Agency:</strong> {{ $tender->department }}</p>
                             <p><strong>City:</strong> {{ $tender->city }}</p>
@@ -85,7 +85,7 @@
                             <strong>Tender Inquiry</strong>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('front.tender.inquiry') }}" method="POST">
+                            <form action="{{ route('front.tender.inquiry') }}" method="POST" class="php-email-form">
                                 @csrf
                                 <div class="form-group">
                                     <label for="name">Name</label>
@@ -108,8 +108,14 @@
                                     <label for="state">State</label>
                                     <input type="text" class="form-control" id="state" name="state" required>
                                 </div>
+                                <br>
                                 <button type="submit" class="btn btn-danger w-100">Submit</button>
                             </form>
+
+                            <br>
+                            @if(session()->has('success'))
+                                <div class="sent-message" style="color: #fff;background: #059652;text-align: center;padding: 15px;font-weight: 600;">{{ session()->get('success')}}</div>
+                            @endif
                         </div>
                     </div>
                 </div>

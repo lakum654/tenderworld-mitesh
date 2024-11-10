@@ -35,7 +35,7 @@ Route::view('/about', 'user.about')->name('about');
 Route::get('/tenders', [IndexController::class,'tender'])->name('front.tender');
 Route::get('/tender/{id}', [IndexController::class,'tenderShow'])->name('front.tender.show');
 Route::get('/tender/download', [IndexController::class,'tenderShow'])->name('front.tender.download');
-Route::get('/tender/inquiry', [IndexController::class,'tenderShow'])->name('front.tender.inquiry');
+Route::post('/tender/inquiry', [IndexController::class,'tenderInquiry'])->name('front.tender.inquiry');
 Route::get('/post/{id}/{slug}', [HomeController::class, 'single'])->name('front.single');
 // Route::get('/', function () {
 //     return view('auth/login');
