@@ -32,7 +32,7 @@ Route::view('/contact', 'user.contact')->name('contact');
 Route::post('/contact', [IndexController::class,'contactStore'])->name('contact.store');
 Route::view('/about', 'user.about')->name('about');
 
-Route::get('/tender', [IndexController::class,'tender'])->name('front.tender');
+Route::get('/tenders', [IndexController::class,'tender'])->name('front.tender');
 Route::get('/tender/{id}', [IndexController::class,'tenderShow'])->name('front.tender.show');
 Route::get('/tender/download', [IndexController::class,'tenderShow'])->name('front.tender.download');
 Route::get('/tender/inquiry', [IndexController::class,'tenderShow'])->name('front.tender.inquiry');
