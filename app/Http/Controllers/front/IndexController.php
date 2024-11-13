@@ -57,7 +57,7 @@ class IndexController extends Controller
         }
 
         // Paginate the results (3 items per page)
-        $tenders = $query->paginate(3);
+        $tenders = $query->paginate(10);
 
         // Return JSON response with paginated data
         return response()->json($tenders);
