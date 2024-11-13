@@ -35,6 +35,7 @@ Route::post('/contact', [IndexController::class,'contactStore'])->name('contact.
 Route::view('/about', 'user.about')->name('about');
 
 Route::get('/tenders', [IndexController::class,'tender'])->name('front.tender');
+Route::get('/fetch-tenders', [IndexController::class, 'fetchTenders'])->name('fetch.tenders');
 Route::get('/tender/{id}', [IndexController::class,'tenderShow'])->name('front.tender.show');
 Route::get('/tender/download/{id}', [IndexController::class,'tenderDownload'])->name('front.tender.download');
 Route::post('/tender/inquiry', [IndexController::class,'tenderInquiry'])->name('front.tender.inquiry');
@@ -67,6 +68,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'],], function () {
     Route::get('contacts', [ContactController::class, 'index'])->name('contacts.index');
     Route::get('/delete/{id}', [ContactController::class, 'destroy'])->name('contacts.delete');
     Route::get('contacts/data', [ContactController::class, 'getData'])->name('contacts.data');
+});
+
+Route::group(['prefix' => 'admin', 'middleware' => ['auth'],], function () {
+    Route::get('tender-inquiries', [ContactController::class, 'index'])->name('tender-inquiries.index');
+    Route::get('/tender-inquiries/delete/{id}', [ContactController::class, 'destroy'])->name('tender-inquiries.delete');
+    Route::get('inquiries/data', [ContactController::class, 'getData'])->name('tender-inquiries.data');
 });
 
 
