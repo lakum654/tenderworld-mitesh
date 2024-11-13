@@ -38,14 +38,16 @@
     <section id="events" class="events">
         <div class="container" data-aos="fade-up">
             <h2 class="text-center">Latest 2024 Government eTenders</h2>
-            <p class="text-center">Discover the latest tenders offering lucrative opportunities. Stay updated with our real-time listings, ensuring you never miss a chance to bid on valuable contracts in your industry.</p>
+            <p class="text-center">Discover the latest tenders offering lucrative opportunities. Stay updated with our
+                real-time listings, ensuring you never miss a chance to bid on valuable contracts in your industry.</p>
 
             <!-- Search Box -->
             <div class="row mb-4 justify-content-center">
                 <div class="col-md-8">
                     <form id="searchForm">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search Your Tender Here" name="query" id="searchQuery">
+                            <input type="text" class="form-control" placeholder="Search Your Tender Here" name="query"
+                                id="searchQuery">
                             <button class="btn btn-primary" type="button" onclick="fetchTenders()">Search</button>
                         </div>
                     </form>
@@ -153,16 +155,50 @@
         }
 
         function renderPagination(data) {
-            let html = '<nav><ul class="pagination justify-content-center">';
+            let html = '<nav><ul class="pagination justify-content-center align-items-center">';
+
+            // Show "Previous" button if there is a previous page
             if (data.prev_page_url) {
-                html += `<li class="page-item"><a class="page-link" href="javascript:void(0)" onclick="fetchTenders(${data.current_page - 1})">Previous</a></li>`;
+                html += `
+            <li class="page-item">
+                <a class="page-link" href="javascript:void(0)" onclick="fetchTenders(${data.current_page - 1})" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span> Previous
+                </a>
+            </li>`;
+            } else {
+                // Disabled "Previous" button if there is no previous page
+                html += `
+            <li class="page-item disabled">
+                <a class="page-link" href="javascript:void(0)" tabindex="-1" aria-disabled="true">
+                    <span aria-hidden="true">&laquo;</span> Previous
+                </a>
+            </li>`;
             }
-            for (let i = 1; i <= data.last_page; i++) {
-                html += `<li class="page-item ${i === data.current_page ? 'active' : ''}"><a class="page-link" href="javascript:void(0)" onclick="fetchTenders(${i})">${i}</a></li>`;
-            }
+
+            // Show the current page and total pages information as text, styled for clarity
+            html += `
+        <li class="page-item disabled">
+            <span class="page-link">Page ${data.current_page} of ${data.last_page}</span>
+        </li>`;
+
+            // Show "Next" button if there is a next page
             if (data.next_page_url) {
-                html += `<li class="page-item"><a class="page-link" href="javascript:void(0)" onclick="fetchTenders(${data.current_page + 1})">Next</a></li>`;
+                html += `
+            <li class="page-item">
+                <a class="page-link" href="javascript:void(0)" onclick="fetchTenders(${data.current_page + 1})" aria-label="Next">
+                    Next <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>`;
+            } else {
+                // Disabled "Next" button if there is no next page
+                html += `
+            <li class="page-item disabled">
+                <a class="page-link" href="javascript:void(0)" tabindex="-1" aria-disabled="true">
+                    Next <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>`;
             }
+
             html += '</ul></nav>';
             $('#paginationLinks').html(html);
         }
