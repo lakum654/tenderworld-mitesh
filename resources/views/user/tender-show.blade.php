@@ -32,7 +32,7 @@
                             <p><strong>Tender Agency:</strong> {{ $tender->department }}</p>
                             <p><strong>City:</strong> {{ $tender->city }}</p>
                             <p><strong>State:</strong> {{ $tender->state }}</p>
-                            <p><strong>Description:</strong> {{ $tender->work }}</p>
+                            <p><strong>Description:</strong> {!! $tender->work !!}</p>
                         </div>
                     </div>
 
