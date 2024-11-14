@@ -13,6 +13,20 @@
 
     @include('user.layouts.headerscript')
     @stack('css')
+
+    <style>
+        .theme-bg-color {
+            background: #ce1212 !important;
+        }
+        .theme-btn-color {
+            background: #ce1212 !important;
+            color:#fff;
+        }
+
+        .theme-btn-color:hover {
+            color:#fff;
+        }
+    </style>
 </head>
 
 <body>
