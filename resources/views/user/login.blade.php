@@ -23,7 +23,7 @@
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
-                    <button type="submit" class="btn btn-primary w-100">Login</button>
+                    <button type="submit" class="btn btn-danger w-100">Login</button>
                 </form>
                 <div class="text-center mt-3">
                     <a href="javascript:void(0);" onclick="openRegisterModal()">Don't have an account? Register here</a>

@@ -55,7 +55,14 @@
                         @enderror
                     </div>
 
-                    <button type="submit" class="btn btn-primary w-100">Submit</button>
+                    <button type="submit" class="btn btn-danger w-100">Submit</button>
+
+
+                    <div class="text-center mt-3">
+                        <p>If you're already registered, please <a href="javascript:void(0);" onclick="openLoginModal()">sign in here</a>.</p>
+                    </div>
+
+
                 </form>
             </div>
         </div>
