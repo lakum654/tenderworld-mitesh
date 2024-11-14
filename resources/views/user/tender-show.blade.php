@@ -12,7 +12,7 @@
         <div class="container" data-aos="fade-up">
 
             <!-- Tender Title -->
-            <h4 class="my-4">{{ $tender->work }}</h4>
+            <h4 class="my-4">{!! $tender->work !!}</h4>
             <p class="mb-4">
                 Latest Tender Detail From {{ $tender->department }} For {{ $tender->work }} In {{ $tender->city }},
                 {{ $tender->state }}, Reference Number {{ $tender->tender_id }}. Don't Miss Out On This Chance To Be Part Of
