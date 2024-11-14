@@ -16,7 +16,7 @@
             <div class="col-lg-3 col-xs-6">
                 <div class="small-box">
                     <div class="inner">
-                        <h3>150</h3>
+                        <h3>{{$usersCount}}</h3>
 
                         <p>Users</p>
                     </div>
@@ -29,9 +29,9 @@
             <div class="col-lg-3 col-xs-6">
                 <div class="small-box">
                     <div class="inner">
-                        <h3>53<sup style="font-size: 20px">%</sup></h3>
+                        <h3>{{$tendersCount}}<sup style="font-size: 20px"></sup></h3>
 
-                        <p>Subscribers</p>
+                        <p>Tenders</p>
                     </div>
                     <div class="icon">
                         <i class="fa fa-users" aria-hidden="true"></i>
@@ -42,9 +42,9 @@
             <div class="col-lg-3 col-xs-6">
                 <div class="small-box">
                     <div class="inner">
-                        <h3>44</h3>
+                        <h3>{{$contactCount}}</h3>
 
-                        <p>Live Videos</p>
+                        <p>Contacts</p>
                     </div>
                     <div class="icon">
                         <i class="fa fa-video-camera" aria-hidden="true"></i>
@@ -52,7 +52,7 @@
                     <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
             </div>
-            <div class="col-lg-3 col-xs-6">
+            {{-- <div class="col-lg-3 col-xs-6">
                 <div class="small-box">
                     <div class="inner">
                         <h3>$650000</h3>
@@ -64,7 +64,7 @@
                     </div>
                     <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </section>
 @endsection

@@ -4,7 +4,7 @@
             <div class="pull-left image">
                 @if (file_exists('public/storage/' . auth()->user()->profile))
                     <img src="{{ asset('public/storage/' . auth()->user()->profile) }}" class="img-circle" alt="User Image"
-                        style="height: 40px;width:45px;">
+                        style="height: 45px;width:45px;">
                 @else
                     <img src="{{ asset('public/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
                 @endif

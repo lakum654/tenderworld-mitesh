@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\ContactController;
+use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\KeywordController;
 use App\Http\Controllers\admin\ProfileController;
 use App\Http\Controllers\admin\QuestionController;
@@ -57,7 +58,7 @@ Route::group(['prefix' => 'admin'], function () {
     Auth::routes();
 });
 
-Route::view('/admin', 'admin.index')->middleware('auth');
+Route::get('/admin', [DashboardController::class,'index'])->middleware('auth');
 Route::group(['prefix' => 'admin', 'middleware' => ['auth'],], function () {
     Route::get('services/data', [ServiceController::class, 'getData'])->name('services.data');
     Route::get('/changeStatus/{id}', [ServiceController::class, 'changeStatus'])->name('services.changeStatus');
