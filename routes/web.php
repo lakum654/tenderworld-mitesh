@@ -8,6 +8,7 @@ use App\Http\Controllers\admin\ServiceController;
 use App\Http\Controllers\admin\SettingController;
 use App\Http\Controllers\admin\SitemapController;
 use App\Http\Controllers\admin\TenderController;
+use App\Http\Controllers\admin\TenderInquiryController;
 use App\Http\Controllers\front\AuthController;
 use App\Http\Controllers\front\IndexController;
 use Illuminate\Support\Facades\Route;
@@ -71,9 +72,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'],], function () {
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth'],], function () {
-    Route::get('tender-inquiries', [ContactController::class, 'index'])->name('tender-inquiries.index');
-    Route::get('/tender-inquiries/delete/{id}', [ContactController::class, 'destroy'])->name('tender-inquiries.delete');
-    Route::get('inquiries/data', [ContactController::class, 'getData'])->name('tender-inquiries.data');
+    Route::get('/delete/{id}', [TenderInquiryController::class, 'destroy'])->name('tender-inquiries.delete');
+    Route::get('tender-inquiries', [TenderInquiryController::class, 'index'])->name('tender-inquiries.index');
+    Route::get('/tender-inquiries/delete/{id}', [TenderInquiryController::class, 'destroy'])->name('tender-inquiries.delete');
+    Route::get('inquiries/data', [TenderInquiryController::class, 'getData'])->name('tender-inquiries.data');
 });
 
 

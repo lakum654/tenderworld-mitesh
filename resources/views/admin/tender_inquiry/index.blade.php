@@ -22,9 +22,9 @@
         <div class="box">
             <div class="box-header with-border">
                 <h3 class="box-title">{{ $moduleName }}</h3>
-                <div class="box-tools">
-                    {{-- <a href="{{ route("$route") }}" class="btn btn-theme btn-sm">+ New</a> --}}
-                </div>
+                {{-- <div class="box-tools">
+                    <a href="{{ route("$route.create") }}" class="btn btn-theme btn-sm">+ New</a>
+                </div> --}}
             </div>
 
             <div class="box-body">
@@ -33,10 +33,11 @@
                         <thead>
                             <tr>
                                 <th>Sr No.</th>
+                                <th>Tender</th>
                                 <th>Name</th>
-                                <th>EMail</th>
-                                <th>Subject</th>
-                                <th>Message</th>
+                                <th>Company Name</th>
+                                <th>Email</th>
+                                <th>Mobile</th>
                                 <th>Created At</th>
                                 <th>Action</th>
                             </tr>
@@ -65,20 +66,24 @@
                     name: 'DT_RowIndex'
                 },
                 {
+                    data: 'tender.tender_id',
+                    name: 'tender_id'
+                },
+                {
                     data: 'name',
                     name: 'name'
+                },
+                {
+                    data: 'company_name',
+                    name: 'company_name'
                 },
                 {
                     data: 'email',
                     name: 'email'
                 },
                 {
-                    data: 'subject',
-                    name: 'subject'
-                },
-                {
-                    data: 'message',
-                    name: 'message'
+                    data: 'mobile',
+                    name: 'mobile'
                 },
                 {
                     data: 'created_at',

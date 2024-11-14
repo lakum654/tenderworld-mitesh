@@ -68,9 +68,9 @@
                 </a>
             </li>
 
-            <li class="{{ Route::is('tender.index') || Route::is('tender.*') ? 'active' : '' }}">
-                <a href="{{ route('tender.index') }}">
-                    <i class="fa fa-briefcase"></i> <span>Tenders</span>
+            <li class="{{ Route::is('tender-inquiries.index') || Route::is('tender-inquiries.*') ? 'active' : '' }}">
+                <a href="{{ route('tender-inquiries.index') }}">
+                    <i class="fa fa-envelope"></i> <span>Tender Inquiry</span>
                 </a>
             </li>
 

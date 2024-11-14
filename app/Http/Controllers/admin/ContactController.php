@@ -38,6 +38,10 @@ class ContactController extends Controller
                 return $btn;
             })
 
+            ->editColumn('created_at',function($row) {
+                return date('d-m-Y H:i:m',strtotime($row->created_at));
+            })
+
             ->rawColumns(['action'])
             ->make(true);
     }

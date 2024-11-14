@@ -9,4 +9,8 @@ class TenderInquiry extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function tender() {
+        return $this->belongsTo(Tender::class,'tender_id','id');
+    }
 }
