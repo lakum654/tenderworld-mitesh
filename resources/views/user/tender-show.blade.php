@@ -62,7 +62,7 @@
                         <div class="card-body text-center">
                             @if(!Auth::check())
                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                                data-bs-target="#registrationModal" id="registrationModalBtn">
+                                data-bs-target="#registrationModal" id="registrationModalBtn" style="background:blue; color:white;">
                                 Download Document
                             </button>
                             @else
