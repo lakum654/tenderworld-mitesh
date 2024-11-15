@@ -41,7 +41,7 @@
                                 <div class="form-group">
                                     <label for="file">*Import Tender File (.xlsx,.xls):</label>
                                     <input type="file" class="form-control" id="file" name="file">
-                                    <a href="{{ asset('public/tender/tender-samples.xlsx') }}">Download Sample</a>
+                                    <a href="{{ asset('public/tender/tender-sampless.xlsx') }}">Download Sample</a>
                                     <span class="error"> {{ $errors->first('file') }}</span>
                                 </div>
                             </div>

@@ -36,6 +36,7 @@
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Mobile</th>
+                                <th>Is Approved</th>
                                 <th>Registred At</th>
                                 <th>Action</th>
                             </tr>
@@ -74,6 +75,10 @@
                 {
                     data: 'mobile',
                     name: 'mobile'
+                },
+                {
+                    data: 'is_approved',
+                    name: 'is_approved'
                 },
                 {
                     data: 'created_at',

@@ -30,6 +30,7 @@ class CreateTendersTable extends Migration
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
             $table->date('tender_open')->nullable();
+            $table->text('document_link')->nullable();
             $table->timestamps();
         });
     }

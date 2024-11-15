@@ -35,7 +35,7 @@ class TenderController extends Controller
 
     public function getData()
     {
-        $data = Tender::with('category')->get();
+        $data = Tender::with('category')->orderBy('id','desc')->get();
         return DataTables::of($data)
             ->addIndexColumn()
             ->addColumn('action', function ($row) {
@@ -99,7 +99,8 @@ class TenderController extends Controller
             "Start date",
             "End date",
             "Tender Open",
-            "Category Name"
+            "Category Name",
+            "Document Link"
         ];
 
         // Validate the file header
@@ -147,7 +148,8 @@ class TenderController extends Controller
                 'start_date' => $row[11],
                 'end_date' => $row[12],
                 'tender_open' => $row[13],
-                'category_id' => $row[14]
+                'category_id' => $row[14],
+                'document_link' => $row[15],
             ];
         }
 

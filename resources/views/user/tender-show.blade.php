@@ -14,7 +14,7 @@
             <!-- Tender Title -->
             <h4 class="my-4">{!! $tender->work !!}</h4>
             <p class="mb-4">
-                Latest Tender Detail From {{ $tender->department }} For {{ $tender->work }} In {{ $tender->city }},
+                Latest Tender Detail From {{ $tender->department }} For {{ strip_tags($tender->work)}} In {{ $tender->city }},
                 {{ $tender->state }}, Reference Number {{ $tender->tender_id }}. Don't Miss Out On This Chance To Be Part Of
                 A Significant Project.
             </p>
@@ -66,8 +66,17 @@
                                 Download Document
                             </button>
                             @else
-                             <a href="{{ route('front.tender.download', $tender->id) }}" class="btn btn-danger">Download
-                                Document</a>
+                            @if(auth()->user()->is_approved)
+                                @php $text="Download Document"; @endphp
+                            @else
+                                @php $text = "Please wait for admin approval to download the document."; @endphp
+                            @endif
+                            <a href="{{ auth()->user()->is_approved ? $tender->document_link : '#' }}"
+                                class="btn"
+                                style="background:blue; color:white; {{ auth()->user()->is_approved ? '' : 'pointer-events: none; opacity: 0.6;' }}"
+                                target="_blank">
+                                {{$text}}
+                             </a>
                             @endif
                         </div>
                     </div>

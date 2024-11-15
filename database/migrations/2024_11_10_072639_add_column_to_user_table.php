@@ -16,6 +16,7 @@ class AddColumnToUserTable extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->boolean('is_admin')->default(0);
             $table->string('mobile')->nullable();
+            $table->boolean('is_approved')->default(0);
         });
     }
 
@@ -27,7 +28,7 @@ class AddColumnToUserTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn(['is_admin','mobile']);
+            $table->dropColumn(['is_admin','mobile','is_approved']);
         });
     }
 }

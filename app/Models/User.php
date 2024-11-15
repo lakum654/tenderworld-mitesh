@@ -23,6 +23,7 @@ class User extends Authenticatable
         'mobile',
         'is_admin',
         'password',
+        'is_approved'
     ];
 
     /**
