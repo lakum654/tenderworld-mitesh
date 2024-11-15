@@ -8,6 +8,7 @@ use App\Imports\TenderImport;
 use App\Models\Tender;
 use App\Models\TenderCategory;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use PhpOffice\PhpSpreadsheet\Shared\Date;
@@ -49,6 +50,10 @@ class TenderController extends Controller
                 return $btn;
             })
 
+            ->addColumn('checkbox', function ($row) {
+                return "<input type='checkbox' class='checkbox' value='".$row->id."'/>";
+            })
+
             ->editColumn('work', function ($row) {
                 return strip_tags(Str::limit($row->work, 150));
             })
@@ -65,7 +70,7 @@ class TenderController extends Controller
                 return date('d-m-Y',strtotime($row->tender_open));
             })
 
-            ->rawColumns(['action'])
+            ->rawColumns(['action','checkbox'])
             ->make(true);
     }
 
@@ -245,5 +250,15 @@ class TenderController extends Controller
 
         Helper::successMsg('delete', 'Tender');
         return redirect(route($this->data['route'] . '.index'));
+    }
+
+    public function bulkDestroy(Request $request) {
+        try {
+            $tender_ids = $request->tender_ids;
+            Tender::whereIn('id',$tender_ids)->delete();
+            return response()->json(['status' => true]);
+        } catch(Exception $e) {
+            return response()->json(['status' => false]);
+        }
     }
 }

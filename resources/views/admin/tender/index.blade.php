@@ -23,6 +23,8 @@
             <div class="box-header with-border">
                 <h3 class="box-title">{{ $moduleName }}</h3>
                 <div class="box-tools">
+                    <a href="javascript:void(0);" class="btn btn-danger btn-sm hidden" id="delete_all_btn"><i
+                            class="fa fa-trash"> </i> Delete</a>
                     <a href="{{ route("$route.create") }}" class="btn btn-theme btn-sm">+ New</a>
                 </div>
             </div>
@@ -32,6 +34,11 @@
                     <table class="table table-bordered datatable" style="width: 100%;">
                         <thead>
                             <tr>
+                                <th>
+                                    <div class="form-check">
+                                        <input type="checkbox" id="select_all" class="form-check-input" />
+                                    </div>
+                                </th>
                                 <th>Sr No.</th>
                                 <th>Bid No</th>
                                 <th>Category Name</th>
@@ -64,50 +71,55 @@
             serverSide: true,
             ajax: "{{ route("$route.data") }}",
             columns: [{
+                    data: 'checkbox',
+                    name: 'checkbox',
+                    orderable: false
+                },
+                {
                     data: 'DT_RowIndex',
                     name: 'DT_RowIndex',
-                    width:'10px'
+                    width: '10px'
 
                 },
                 {
                     data: 'bid_no',
                     name: 'bid_no',
-                    width:'70px'
+                    width: '70px'
                 },
                 {
                     data: 'category.name',
                     name: 'tender_name',
-                    width:'70px'
+                    width: '70px'
                 },
                 {
                     data: 'work',
                     name: 'work',
-                    width:'300px'
+                    width: '300px'
                 },
                 {
                     data: 'department',
                     name: 'department',
-                    width:'150px'
+                    width: '150px'
                 },
                 {
                     data: 'emd_exemption',
                     name: 'emd_exemption',
-                    width:'150px'
+                    width: '150px'
                 },
                 {
                     data: 'start_date',
                     name: 'start_date',
-                    width:'70px'
+                    width: '70px'
                 },
                 {
                     data: 'end_date',
                     name: 'end_date',
-                    width:'70px'
+                    width: '70px'
                 },
                 {
                     data: 'tender_open',
                     name: 'tender_open',
-                    width:'70px'
+                    width: '70px'
                 },
                 {
                     data: 'action',
@@ -116,6 +128,94 @@
                     searchable: false
                 },
             ]
+        });
+
+
+        let deleteTenderArray = [];
+
+        // Handle "Select All" checkbox
+        $(document).on('change', '#select_all', function() {
+            if ($(this).prop('checked')) {
+                $('body').find('#delete_all_btn').removeClass('hidden');
+                $('body').find('.checkbox').prop('checked', true).trigger('change');
+            } else {
+                $('body').find('.checkbox').prop('checked', false).trigger('change');
+                $('body').find('#delete_all_btn').addClass('hidden');
+            }
+        });
+
+        // Handle individual checkboxes
+        $(document).on('change', '.checkbox', function() {
+            let tenderId = $(this).val();
+
+            if ($(this).prop('checked')) {
+                // Add to the array if not already present
+                if (!deleteTenderArray.includes(tenderId)) {
+                    deleteTenderArray.push(tenderId);
+                }
+            } else {
+                // Remove from the array
+                deleteTenderArray = deleteTenderArray.filter(id => id !== tenderId);
+            }
+
+            // Toggle "Delete All" button visibility
+            if ($('body').find('.checkbox:checked').length > 0) {
+                $('body').find('#delete_all_btn').removeClass('hidden');
+            } else {
+                $('body').find('#delete_all_btn').addClass('hidden');
+            }
+
+            // Log the current array
+            console.log(deleteTenderArray.join(','));
+        });
+
+
+        // Bulk delete function
+        function deleteBulkTender() {
+            $.ajax({
+                type: "POST",
+                url: "{{ route('tender.bulk_delete') }}",
+                data: {
+                    tender_ids: deleteTenderArray,
+                    _token: "{{ csrf_token() }}"
+                },
+                dataType: "json",
+                success: function(response) {
+                    // console.log(response);
+                    // Optionally, remove deleted tenders from the UI
+                    // deleteTenderArray.forEach(id => {
+                    //     $(`.checkbox[value="${id}"]`).closest('tr').remove();
+                    // });
+                    deleteTenderArray = []; // Reset the array
+                    $('body').find('#delete_all_btn').addClass('hidden');
+                    table.draw();
+                    $('body').find('#select_all').prop('checked', false).trigger('change');
+                    if (response['status']) {
+                        swal("Tenders", "Tenders Deleted Successfully.", "success")
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error("Error:", error);
+                }
+            });
+        }
+
+        $(document).on('click', '#delete_all_btn', function(e) {
+            e.preventDefault();
+            var linkURL = $(this).attr("href");
+            Swal.fire({
+                title: 'Are you sure want to Delete Select Tenders?',
+                text: "As that can be undone by doing reverse.",
+                icon: 'success',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes'
+            }).then((result) => {
+                if (result.value) {
+                    deleteBulkTender();
+                }
+            });
         });
     </script>
 @endsection
