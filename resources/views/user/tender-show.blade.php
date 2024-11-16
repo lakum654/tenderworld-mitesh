@@ -78,6 +78,19 @@
                                 {{$text}}
                              </a>
                             @endif
+
+                            @if(auth()->user()->is_approved==false)
+                            <div class="alert alert-info d-flex align-items-center mt-1" role="alert">
+                                <i class="fa-solid fa-circle-info me-2"></i>
+                                <div>
+                                    <strong>Info:</strong> You can also contact us on
+                                    <a href="https://wa.me/7600607216?text=Hi" target="_blank" class="text-decoration-none" style="color: green;">
+                                        <i class="fa-brands fa-whatsapp fa-beat-fade"></i> +91 7600607216
+                                    </a>
+                                </div>
+                            </div>
+
+                            @endif
                         </div>
                     </div>
 
