@@ -15,6 +15,9 @@ use App\Http\Controllers\front\IndexController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use App\Models\City;
+use App\Models\State;
+use App\Models\Tender;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 
@@ -163,3 +166,14 @@ Route::get('copy-storage-files', function () {
 });
 
 
+Route::get('get-city-state',function() {
+    foreach(Tender::select('city','state')->get()->toArray() as $tender) {
+        if(City::where('name',$tender['city'])->first() == null) {
+            City::create(['name' => $tender['city']]);
+        }
+
+        if(State::where('name',$tender['state'])->first() == null) {
+            State::create(['name' => $tender['state']]);
+        }
+    }
+});
