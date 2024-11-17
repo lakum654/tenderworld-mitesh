@@ -101,4 +101,13 @@ class IndexController extends Controller
     {
         return 'Tender Document Download Code Is Pendding';
     }
+
+    public function tenderSearch()
+    {
+        $search = $_GET['query'];
+        $tenders = Tender::where('work','like','%'.$search.'%')->paginate(10);
+        $states = State::get();
+        $cities = City::get();
+        return view('user.tender', compact('tenders','states','cities'));
+    }
 }

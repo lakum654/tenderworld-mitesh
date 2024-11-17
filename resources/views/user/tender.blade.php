@@ -53,7 +53,7 @@
                     <form id="searchForm">
                         <div class="input-group">
                             <input type="search" class="form-control" placeholder="Search Your Tender Here" name="query"
-                                id="searchQuery">
+                                id="searchQuery" value="{{ $_GET['query'] ?? "" }}">
                             {{-- <button class="btn btn-primary" type="button" onclick="fetchTenders()">Search</button> --}}
                         </div>
                     </form>
@@ -78,7 +78,7 @@
                             <select class="form-control" id="state">
                                 <option>Select State</option>
                                 @foreach ($states as $key => $state)
-                                    <option value="{{$state->name}}">{{$state->name}}</option>
+                                    <option value="{{ $state->name }}">{{ $state->name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -88,7 +88,7 @@
                             <select class="form-control" id="city">
                                 <option>Select City</option>
                                 @foreach ($cities as $key => $city)
-                                    <option value="{{$city->name}}">{{$city->name}}</option>
+                                    <option value="{{ $city->name }}">{{ $city->name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -149,29 +149,64 @@
 
         function renderTenders(tenders) {
             let html = '';
-            tenders.forEach(tender => {
-                html += `
-                    <div class="col-md-12 col-lg-12 mb-4">
-                        <div class="card border-0 shadow">
-                            <div class="card-header bg-danger text-white d-flex justify-content-between">
-                                <strong>Ref No: ${tender.tender_id}</strong>
-                                <span>Location: ${tender.city}, ${tender.state}</span>
-                            </div>
-                            <div class="card-body">
-                                <h5 class="card-title">${tender.work}</h5>
-                                <p class="card-text">
-                                    <strong>Agency / Dept:</strong> ${tender.department}<br>
-                                    <strong>Due Date:</strong> ${new Date(tender.end_date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}<br>
-                                    <strong>Tender Value:</strong> ${tender.tender_value ?? 'Refer Document'}
-                                </p>
-                                <a href="tender/${tender.id}" class="btn btn-outline-danger">View Documents</a>
-                            </div>
+
+            // Check if tenders array is not empty
+            if (tenders.length) {
+                tenders.forEach(tender => {
+                    // Destructure the tender object for better readability
+                    const {
+                        tender_id,
+                        city,
+                        state,
+                        work,
+                        department,
+                        end_date,
+                        tender_value,
+                        id
+                    } = tender;
+
+                    // Append each tender's HTML to the variable
+                    html += `
+                <div class="col-md-12 col-lg-12 mb-4">
+                    <div class="card border-0 shadow">
+                        <!-- Card Header -->
+                        <div class="card-header bg-danger text-white d-flex justify-content-between">
+                            <strong>Ref No: ${tender_id || 'N/A'}</strong>
+                            <span>Location: ${city || 'Unknown'}, ${state || 'Unknown'}</span>
+                        </div>
+                        <!-- Card Body -->
+                        <div class="card-body">
+                            <h5 class="card-title">${work || 'No Work Description Available'}</h5>
+                            <p class="card-text">
+                                <strong>Agency / Dept:</strong> ${department || 'Not Specified'}<br>
+                                <strong>Due Date:</strong> ${end_date
+                                    ? new Date(end_date).toLocaleDateString('en-US', {
+                                        month: 'short',
+                                        day: 'numeric',
+                                        year: 'numeric'
+                                    })
+                                    : 'No Date Available'}<br>
+                                <strong>Tender Value:</strong> ${tender_value ?? 'Refer Document'}
+                            </p>
+                            <a href="tender/${id}" class="btn btn-outline-danger">View Documents</a>
                         </div>
                     </div>
-                `;
-            });
+                </div>
+            `;
+                });
+            } else {
+                // If no tenders are available
+                html += `
+            <div class="col-12 text-center">
+                <h3 class="text-muted">No Tenders Found</h3>
+            </div>
+        `;
+            }
+
+            // Update the tender list container
             $('#tenderList').html(html);
         }
+
 
         function renderPagination(data) {
             let html = '<nav><ul class="pagination justify-content-center align-items-center">';
@@ -196,9 +231,9 @@
 
             // Show the current page and total pages information as text, styled for clarity
             html += `
-        <li class="page-item disabled">
-            <span class="page-link text-danger">Page ${data.current_page} of ${data.last_page}</span>
-        </li>`;
+                <li class="page-item disabled">
+                    <span class="page-link text-danger">Page ${data.current_page} of ${data.last_page}</span>
+                </li>`;
 
             // Show "Next" button if there is a next page
             if (data.next_page_url) {
@@ -219,6 +254,10 @@
             }
 
             html += '</ul></nav>';
+
+            if(data.data.length <= 0) {
+                html = '';
+            }
             $('#paginationLinks').html(html);
         }
 

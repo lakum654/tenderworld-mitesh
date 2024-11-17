@@ -45,7 +45,7 @@ Route::get('/tender/{id}', [IndexController::class,'tenderShow'])->name('front.t
 Route::get('/tender/download/{id}', [IndexController::class,'tenderDownload'])->name('front.tender.download');
 Route::post('/tender/inquiry', [IndexController::class,'tenderInquiry'])->name('front.tender.inquiry');
 Route::get('/post/{id}/{slug}', [HomeController::class, 'single'])->name('front.single');
-
+Route::get('tender-search',[IndexController::class,'tenderSearch'])->name('front.tender.search');
 
 Route::post('user/register',[AuthController::class,'register'])->name('front.auth.register');
 Route::post('user/login',[AuthController::class,'login'])->name('front.auth.login');

@@ -1,13 +1,74 @@
 @extends('user.layouts.master')
 
+@push('css')
+    <style>
+        .hero-section {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            /* Keeps content inside the container */
+        }
 
+        .hero-section .hero-bg {
+            width: 100%;
+            height: auto;
+            /* Maintain the original aspect ratio of the image */
+            position: relative;
+            /* Make sure it remains in normal document flow */
+            z-index: 1;
+        }
+
+        .search-container {
+            position: absolute;
+            top: 50%;
+            /* Center vertically within the hero section */
+            left: 50%;
+            /* Center horizontally within the hero section */
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            /* Ensure the search box is above the image */
+            text-align: center;
+            /* Center-align content */
+        }
+
+        .search-container form input {
+            width: 500px;
+            /* Explicitly increase the width */
+            max-width: 100%;
+            /* Ensure responsiveness */
+            padding: 10px;
+            /* Add padding for better usability */
+            font-size: 16px;
+            /* Improve readability */
+        }
+
+        .search-container form button {
+            height: 45px;
+            /* Match button height to input field */
+            font-size: 16px;
+            /* Improve button text size */
+        }
+    </style>
+@endpush
 @section('hero')
     <!-- ======= Hero Section ======= -->
-    <div class="col-sm-12">
-        <img src="{{ 'public/assets/img/tworld/header.jpg' }}" width="100%" height="100%" alt="">
+    <div class="hero-section position-relative">
+        <!-- Background Image -->
+        <img src="{{ asset('public/assets/img/tworld/header.jpg') }}" class="hero-bg" alt="Hero Background">
+
+        <!-- Search Box -->
+        @if (Route::is('home'))
+            <div class="search-container position-absolute top-50 start-50 translate-middle text-center container">
+                <form action="{{ route('front.tender.search') }}" method="GET" class="d-flex justify-content-center">
+                    <input type="text" name="query" class="form-control me-2" placeholder="Search Your Tender Here">
+                    <button type="submit" class="btn btn-danger">Search</button>
+                </form>
+            </div>
+        @endif
     </div>
     <!-- End Hero -->
 @endsection
+
 
 @section('content')
     <!-- ======= Why Us Section ======= -->
