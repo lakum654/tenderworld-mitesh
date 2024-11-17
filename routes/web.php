@@ -67,8 +67,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'],], function () {
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth'],], function () {
+    Route::get('contact/delete/{id}', [ContactController::class, 'destroy'])->name('contactss.delete');
     Route::get('contacts', [ContactController::class, 'index'])->name('contacts.index');
-    Route::get('/delete/{id}', [ContactController::class, 'destroy'])->name('contacts.delete');
     Route::get('contacts/data', [ContactController::class, 'getData'])->name('contacts.data');
 });
 
