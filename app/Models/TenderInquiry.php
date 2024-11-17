@@ -11,6 +11,6 @@ class TenderInquiry extends Model
     protected $guarded = [];
 
     public function tender() {
-        return $this->belongsTo(Tender::class,'tender_id','id');
+        return $this->belongsTo(Tender::class,'tender_id','id')->withDefault(['tender_id' => '-']);
     }
 }
