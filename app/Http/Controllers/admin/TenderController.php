@@ -10,6 +10,8 @@ use App\Models\TenderCategory;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Maatwebsite\Excel\Facades\Excel;
 use PhpOffice\PhpSpreadsheet\Shared\Date;
 use Yajra\DataTables\Facades\DataTables;
@@ -34,10 +36,30 @@ class TenderController extends Controller
         return view($this->data['view'] . 'index', $this->data);
     }
 
-    public function getData()
+    public function getData(Request $request)
     {
-        $data = Tender::with('category')->orderBy('id','desc')->get();
-        return DataTables::of($data)
+        $tenders = Tender::with('category');
+
+        if ($request->start_date || $request->end_date) {
+            if ($request->start_date && $request->end_date) {
+                $start = date('Y-m-d', strtotime($request->start_date));
+                $end = date('Y-m-d', strtotime($request->end_date));
+                Log::info([$start,$end]);
+                $tenders->whereDate('start_date', '>=', $start)
+                    ->whereDate('end_date', '<=', $end);
+            } elseif ($request->start_date) {
+                $start = date('Y-m-d', strtotime($request->start_date));
+                $tenders->whereDate('start_date', $start);
+                Log::info([$start]);
+            } elseif ($request->end_date) {
+                $end = date('Y-m-d', strtotime($request->end_date));
+                $tenders->whereDate('end_date',$end);
+                Log::info([$end]);
+            }
+        }
+
+        $tenders->orderBy('id','desc');
+        return DataTables::eloquent($tenders)
             ->addIndexColumn()
             ->addColumn('action', function ($row) {
                 $editUrl = route('tender.edit', encrypt($row->id));
@@ -51,7 +73,7 @@ class TenderController extends Controller
             })
 
             ->addColumn('checkbox', function ($row) {
-                return "<input type='checkbox' class='checkbox' value='".$row->id."'/>";
+                return "<input type='checkbox' class='checkbox' value='" . $row->id . "'/>";
             })
 
             ->editColumn('work', function ($row) {
@@ -59,18 +81,18 @@ class TenderController extends Controller
             })
 
             ->editColumn('start_date', function ($row) {
-                return date('d-m-Y',strtotime($row->start_date));
+                return date('d-m-Y', strtotime($row->start_date));
             })
 
             ->editColumn('end_date', function ($row) {
-                return date('d-m-Y',strtotime($row->end_date));
+                return date('d-m-Y', strtotime($row->end_date));
             })
 
             ->editColumn('tender_open', function ($row) {
-                return date('d-m-Y',strtotime($row->tender_open));
+                return date('d-m-Y', strtotime($row->tender_open));
             })
 
-            ->rawColumns(['action','checkbox'])
+            ->rawColumns(['action', 'checkbox'])
             ->make(true);
     }
 
@@ -129,9 +151,9 @@ class TenderController extends Controller
             $row[12] = isset($row[12]) && is_numeric($row[12]) ? $this->convertExcelDate($row[12]) : $row[12];
             $row[13] = isset($row[13]) && is_numeric($row[13]) ? $this->convertExcelDate($row[13]) : $row[13];
 
-            if(isset($row[14])) {
-                $category = TenderCategory::where('name',trim($row[14]))->first();
-                if($category == null) {
+            if (isset($row[14])) {
+                $category = TenderCategory::where('name', trim($row[14]))->first();
+                if ($category == null) {
                     $category = TenderCategory::create(['name' => trim($row[14])]);
                 }
             }
@@ -193,54 +215,55 @@ class TenderController extends Controller
         return view($this->data['view'] . '_form', $this->data);
     }
 
-    public function update(Request $request, $id){
-    // Find the tender by ID
-    $tender = Tender::findOrFail($id);
+    public function update(Request $request, $id)
+    {
+        // Find the tender by ID
+        $tender = Tender::findOrFail($id);
 
-    // Validate the request data
-    $request->validate([
-        'category_id' => 'required|exists:tender_categories,id',
-        'bid_no' => 'required|string',
-        'work' => 'required|string',
-        'tender_id' => 'required|string',
-        'city' => 'required|string',
-        'state' => 'required|string',
-        'department' => 'required|string',
-        'emd_exemption' => 'nullable|string',
-        'mse_exemption' => 'nullable|string',
-        'tender_value' => 'nullable|string',
-        'tender_emd' => 'nullable|string',
-        'tender_fee' => 'nullable|numeric',
-        'start_date' => 'nullable|date',
-        'end_date' => 'nullable|date',
-        'tender_open' => 'nullable|date',
-    ]);
+        // Validate the request data
+        $request->validate([
+            'category_id' => 'required|exists:tender_categories,id',
+            'bid_no' => 'required|string',
+            'work' => 'required|string',
+            'tender_id' => 'required|string',
+            'city' => 'required|string',
+            'state' => 'required|string',
+            'department' => 'required|string',
+            'emd_exemption' => 'nullable|string',
+            'mse_exemption' => 'nullable|string',
+            'tender_value' => 'nullable|string',
+            'tender_emd' => 'nullable|string',
+            'tender_fee' => 'nullable|numeric',
+            'start_date' => 'nullable|date',
+            'end_date' => 'nullable|date',
+            'tender_open' => 'nullable|date',
+        ]);
 
 
-    // dd($request->all());
-    // Update the tender with the validated data
-    $tender->update([
-        'category_id' => $request->category_id,
-        'bid_no' => $request->bid_no,
-        'work' => $request->work,
-        'tender_id' => $request->tender_id,
-        'city' => $request->city,
-        'state' => $request->state,
-        'department' => $request->department,
-        'emd_exemption' => $request->emd_exemption,
-        'mse_exemption' => $request->mse_exemption,
-        'tender_value' => $request->tender_value,
-        'tender_emd' => $request->tender_emd,
-        'tender_fee' => $request->tender_fee,
-        'start_date' => $request->start_date,
-        'end_date' => $request->end_date,
-        'tender_open' => $request->tender_open,
-    ]);
+        // dd($request->all());
+        // Update the tender with the validated data
+        $tender->update([
+            'category_id' => $request->category_id,
+            'bid_no' => $request->bid_no,
+            'work' => $request->work,
+            'tender_id' => $request->tender_id,
+            'city' => $request->city,
+            'state' => $request->state,
+            'department' => $request->department,
+            'emd_exemption' => $request->emd_exemption,
+            'mse_exemption' => $request->mse_exemption,
+            'tender_value' => $request->tender_value,
+            'tender_emd' => $request->tender_emd,
+            'tender_fee' => $request->tender_fee,
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date,
+            'tender_open' => $request->tender_open,
+        ]);
 
-    // Success message and redirect
-    Helper::successMsg('custom', 'Tender updated successfully.');
-    return redirect()->route('tender.index');
-}
+        // Success message and redirect
+        Helper::successMsg('custom', 'Tender updated successfully.');
+        return redirect()->route('tender.index');
+    }
 
 
     public function destroy($id)
@@ -252,12 +275,13 @@ class TenderController extends Controller
         return redirect(route($this->data['route'] . '.index'));
     }
 
-    public function bulkDestroy(Request $request) {
+    public function bulkDestroy(Request $request)
+    {
         try {
             $tender_ids = $request->tender_ids;
-            Tender::whereIn('id',$tender_ids)->delete();
+            Tender::whereIn('id', $tender_ids)->delete();
             return response()->json(['status' => true]);
-        } catch(Exception $e) {
+        } catch (Exception $e) {
             return response()->json(['status' => false]);
         }
     }

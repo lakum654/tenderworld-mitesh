@@ -17,7 +17,6 @@
 
     <!-- Main content -->
     <section class="content">
-
         <!-- Default box -->
         <div class="box">
             <div class="box-header with-border">
@@ -29,7 +28,31 @@
                 </div>
             </div>
 
+
             <div class="box-body">
+                <div class="card-body shadow">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                <label for="start_date">Start Date <span class="requride_cls">*</span>
+                                </label>
+                                <input type="text" id="start_date" name="start_date" class="form-control"
+                                    placeholder="Start Date" readonly>
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-12">
+                                <label for="end_date">End Date <span class="requride_cls">*</span>
+                                </label>
+                                <input type="text" id="end_date" name="end_date" class="form-control"
+                                    placeholder="Enter End Date" readonly>
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-12" style="margin-top:3%">
+                                <button type="submit" class="btn btn-success searchData btn-sm">Apply Filters</button>
+                                <button class="btn btn-danger searchClear btn-sm" data-toggle="collapse"
+                                    data-target="#filterBody">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="table-responsive">
                     <table class="table table-bordered datatable" style="width: 100%;">
                         <thead>
@@ -69,7 +92,14 @@
         var table = $('.datatable').DataTable({
             processing: true,
             serverSide: true,
-            ajax: "{{ route("$route.data") }}",
+            ajax: {
+                url: "{{ route('tender.data') }}",
+                type: "GET",
+                data: function(d) {
+                    d.start_date = $('#start_date').val();
+                    d.end_date = $('#end_date').val();
+                }
+            },
             columns: [{
                     data: 'checkbox',
                     name: 'checkbox',
@@ -130,6 +160,18 @@
             ]
         });
 
+
+        $('.searchData').on('click', function(e) {
+            e.preventDefault();
+            table.draw();
+        });
+
+        $('.searchClear').on('click', function(e) {
+            e.preventDefault();
+            $('body').find('#start_date').val('');
+            $('body').find('#end_date').val('');
+            table.draw();
+        });
 
         let deleteTenderArray = [];
 
@@ -217,5 +259,26 @@
                 }
             });
         });
+
+
+        $('#start_date').datepicker({
+                format: 'dd-mm-yyyy',
+                todayHighlight: true,
+                autoclose: true,
+            })
+            .on('changeDate', function(selected) {
+                var minDate = new Date(selected.date.valueOf());
+                $('#end_date').datepicker('setStartDate', minDate);
+            });
+
+        $('#end_date').datepicker({
+                format: 'dd-mm-yyyy',
+                todayHighlight: true,
+                autoclose: true,
+            })
+            .on('changeDate', function(selected) {
+                var maxDate = new Date(selected.date.valueOf());
+                $('#start_date').datepicker('setEndDate', maxDate);
+            });
     </script>
 @endsection
