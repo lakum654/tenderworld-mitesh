@@ -19,3 +19,6 @@
 
 <!-- Template Main CSS File -->
 <link href="{{ asset('public/assets/css/main.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tagify/3.10.2/tagify.min.css"
+    integrity="sha512-I0AviyNtEnJLGNrBKeG3x5PFLkePKZrtZAXddiMboWQ8N8Bh4EW8wZf7IyBsSjZswFhCyQxV7xnfshUnWdo8AQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />

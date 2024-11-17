@@ -48,8 +48,17 @@ class IndexController extends Controller
         }
 
         if ($request->has('keyword') && $request->input('keyword') != '') {
-            $query->where('work', 'like', '%' . $request->input('keyword') . '%')
-             ->orWhere('department', 'like', '%' . $request->input('keyword') . '%');
+            // Split the input into an array of keywords
+            $keywords = json_decode($request->input('keyword'), true);
+            // dd($keywords);
+            // Apply the `LIKE` condition for each keyword
+            $query->where(function ($subQuery) use ($keywords) {
+                foreach ($keywords as $keyword) {
+                    // dd($keyword['value']);
+                    $subQuery->orWhere('work', 'like', '%' . trim($keyword['value']) . '%')
+                    ->orWhere('department','like','%' . trim($keyword['value']) . '%');
+                }
+            });
         }
 
         if ($request->has('state') && $request->input('state') != '' && $request->input('state') != 'Select State') {

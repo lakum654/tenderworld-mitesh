@@ -31,6 +31,7 @@
         .card {
             border-radius: 8px;
         }
+
         .page-link {
             color: #ce1212 !important;
         }
@@ -207,5 +208,15 @@
             html += '</ul></nav>';
             $('#paginationLinks').html(html);
         }
+
+
+
+
+        // The DOM elements you wish to replace with Tagify
+        var input1 = document.querySelector("#keyword");
+
+
+        // Initialize Tagify components on the above inputs
+        new Tagify(input1);
     </script>
 @endpush
