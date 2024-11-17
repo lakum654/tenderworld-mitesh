@@ -66,7 +66,7 @@
                                 Download Document
                             </button>
                             @else
-                            @if(auth()->user()->is_approved)
+                            @if(isset(auth()->user()?->is_approved) && auth()->user()?->is_approved)
                                 @php $text="Download Document"; @endphp
                             @else
                                 @php $text = "Please wait for admin approval to download the document."; @endphp
@@ -79,7 +79,7 @@
                              </a>
                             @endif
 
-                            @if(auth()->user()->is_approved==false)
+                            @if(isset(auth()->user()?->is_approved) && auth()->user()?->is_approved==false)
                             <div class="alert alert-info d-flex align-items-center mt-1" role="alert">
                                 <i class="fa-solid fa-circle-info me-2"></i>
                                 <div>

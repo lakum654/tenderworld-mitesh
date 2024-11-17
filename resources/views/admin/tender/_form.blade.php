@@ -130,6 +130,12 @@
                             <input type="date" class="form-control" id="tender_open" name="tender_open" value="{{ old('tender_open', $tender->tender_open) }}">
                         </div>
 
+
+                        <div class="col-md-12 col-sm-12">
+                            <label for="document_link">Document Link:</label>
+                            <input type="text" class="form-control" id="document_link" name="document_link" value="{{ old('document_link', $tender->document_link) }}">
+                        </div>
+
                     </div>
                 </div>
 

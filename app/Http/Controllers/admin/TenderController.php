@@ -237,6 +237,7 @@ class TenderController extends Controller
             'start_date' => 'nullable|date',
             'end_date' => 'nullable|date',
             'tender_open' => 'nullable|date',
+            'document_link' => 'nullable'
         ]);
 
 
@@ -258,6 +259,7 @@ class TenderController extends Controller
             'start_date' => $request->start_date,
             'end_date' => $request->end_date,
             'tender_open' => $request->tender_open,
+            'document_link' => $request->document_link
         ]);
 
         // Success message and redirect
