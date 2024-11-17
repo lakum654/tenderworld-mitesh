@@ -5,6 +5,8 @@ namespace App\Http\Controllers\admin;
 use App\Helper\Helper;
 use App\Http\Controllers\Controller;
 use App\Imports\TenderImport;
+use App\Models\City;
+use App\Models\State;
 use App\Models\Tender;
 use App\Models\TenderCategory;
 use Carbon\Carbon;
@@ -155,6 +157,20 @@ class TenderController extends Controller
                 $category = TenderCategory::where('name', trim($row[14]))->first();
                 if ($category == null) {
                     $category = TenderCategory::create(['name' => trim($row[14])]);
+                }
+            }
+
+            if (isset($row[4])) {
+                $state = State::where('name', trim($row[4]))->first();
+                if ($state == null) {
+                    $state = State::create(['name' => trim($row[4])]);
+                }
+            }
+
+            if (isset($row[3])) {
+                $state = City::where('name', trim($row[3]))->first();
+                if ($state == null) {
+                    $state = City::create(['name' => trim($row[3])]);
                 }
             }
 

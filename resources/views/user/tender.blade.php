@@ -77,7 +77,19 @@
                             <label for="state" class="form-label">State</label>
                             <select class="form-control" id="state">
                                 <option>Select State</option>
-                                <!-- Add states here -->
+                                @foreach ($states as $key => $state)
+                                    <option value="{{$state->name}}">{{$state->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="city" class="form-label">City</label>
+                            <select class="form-control" id="city">
+                                <option>Select City</option>
+                                @foreach ($cities as $key => $city)
+                                    <option value="{{$city->name}}">{{$city->name}}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
@@ -105,7 +117,7 @@
             fetchTenders();
 
             // Trigger fetchTenders when any filter input changes
-            $('#searchQuery, #t18RefNo, #keyword, #state').on('input change', function() {
+            $('#searchQuery, #t18RefNo, #keyword, #state,#city').on('input change', function() {
                 fetchTenders();
             });
 
@@ -125,7 +137,8 @@
                     query: $('#searchQuery').val(),
                     refNo: $('#t18RefNo').val(),
                     keyword: $('#keyword').val(),
-                    state: $('#state').val()
+                    state: $('#state').val(),
+                    city: $('#city').val()
                 },
                 success: function(response) {
                     renderTenders(response.data);

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\front;
 
 use App\Http\Controllers\Controller;
+use App\Models\City;
 use App\Models\Contact;
+use App\Models\State;
 use App\Models\Tender;
 use App\Models\TenderInquiry;
 use Exception;
@@ -31,7 +33,9 @@ class IndexController extends Controller
     public function tender()
     {
         $tenders = Tender::paginate(3);
-        return view('user.tender', compact('tenders'));
+        $states = State::get();
+        $cities = City::get();
+        return view('user.tender', compact('tenders','states','cities'));
     }
 
     public function fetchTenders(Request $request)
@@ -63,6 +67,10 @@ class IndexController extends Controller
 
         if ($request->has('state') && $request->input('state') != '' && $request->input('state') != 'Select State') {
             $query->where('state', $request->input('state'));
+        }
+
+        if ($request->has('city') && $request->input('city') != '' && $request->input('city') != 'Select City') {
+            $query->where('city', $request->input('city'));
         }
 
         // Paginate the results (3 items per page)
