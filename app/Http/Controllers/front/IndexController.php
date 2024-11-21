@@ -65,6 +65,10 @@ class IndexController extends Controller
             });
         }
 
+        if ($request->has('department') && $request->input('department') != '') {
+            $query->where('department', 'like', '%' . $request->input('department') . '%');
+        }
+
         if ($request->has('state') && $request->input('state') != '' && $request->input('state') != 'Select State') {
             $query->where('state', $request->input('state'));
         }

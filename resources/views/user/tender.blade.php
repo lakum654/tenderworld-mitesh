@@ -73,6 +73,12 @@
                             <label for="keyword" class="form-label">Keyword</label>
                             <input type="text" class="form-control" id="keyword" placeholder="Enter Keyword...">
                         </div>
+
+                        <div class="mb-3">
+                            <label for="department" class="form-label">Department</label>
+                            <input type="text" class="form-control" id="department" placeholder="Enter Department...">
+                        </div>
+
                         <div class="mb-3">
                             <label for="state" class="form-label">State</label>
                             <select class="form-control" id="state">
@@ -117,7 +123,7 @@
             fetchTenders();
 
             // Trigger fetchTenders when any filter input changes
-            $('#searchQuery, #t18RefNo, #keyword, #state,#city').on('input change', function() {
+            $('#searchQuery, #t18RefNo, #keyword, #state,#city,#department').on('input change', function() {
                 fetchTenders();
             });
 
@@ -138,7 +144,8 @@
                     refNo: $('#t18RefNo').val(),
                     keyword: $('#keyword').val(),
                     state: $('#state').val(),
-                    city: $('#city').val()
+                    city: $('#city').val(),
+                    department: $('#department').val()
                 },
                 success: function(response) {
                     renderTenders(response.data);
