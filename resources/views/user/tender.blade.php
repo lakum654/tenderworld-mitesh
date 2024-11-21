@@ -162,6 +162,7 @@
                 tenders.forEach(tender => {
                     // Destructure the tender object for better readability
                     const {
+                        qty,
                         tender_id,
                         city,
                         state,
@@ -193,7 +194,8 @@
                                         year: 'numeric'
                                     })
                                     : 'No Date Available'}<br>
-                                <strong>Tender Value:</strong> ${tender_value ?? 'Refer Document'}
+                                <strong>Tender Value:</strong> ${tender_value ?? 'Refer Document'}<br>
+                                <strong>Qty:</strong> ${qty}
                             </p>
                             <a href="tender/${id}" class="btn btn-outline-danger">View Documents</a>
                         </div>

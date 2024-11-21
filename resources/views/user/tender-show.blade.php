@@ -28,6 +28,7 @@
                         </div>
                         <div class="card-body">
                             <p><strong>Ref No:</strong> {{ $tender->tender_id }}</p>
+                            <p><strong>Qty:</strong> {{ $tender->qty }}</p>
                             <p><strong>Tender ID:</strong> {{ $tender->tender_id }}</p>
                             <p><strong>Tender Agency:</strong> {{ $tender->department }}</p>
                             <p><strong>City:</strong> {{ $tender->city }}</p>

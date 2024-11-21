@@ -129,7 +129,8 @@ class TenderController extends Controller
             "End date",
             "Tender Open",
             "Category Name",
-            "Document Link"
+            "Document Link",
+            "Qty"
         ];
 
         // Validate the file header
@@ -193,6 +194,7 @@ class TenderController extends Controller
                 'tender_open' => $row[13],
                 'category_id' => $row[14],
                 'document_link' => $row[15],
+                'qty' => $row[16]
             ];
         }
 
@@ -253,7 +255,8 @@ class TenderController extends Controller
             'start_date' => 'nullable|date',
             'end_date' => 'nullable|date',
             'tender_open' => 'nullable|date',
-            'document_link' => 'nullable'
+            'document_link' => 'nullable',
+            'qty' => 'nullable'
         ]);
 
 
@@ -275,7 +278,8 @@ class TenderController extends Controller
             'start_date' => $request->start_date,
             'end_date' => $request->end_date,
             'tender_open' => $request->tender_open,
-            'document_link' => $request->document_link
+            'document_link' => $request->document_link,
+            'qty' => $request->qty
         ]);
 
         // Success message and redirect

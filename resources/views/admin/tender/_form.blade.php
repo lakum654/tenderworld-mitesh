@@ -131,9 +131,14 @@
                         </div>
 
 
-                        <div class="col-md-12 col-sm-12">
+                        <div class="col-md-6 col-sm-12">
                             <label for="document_link">Document Link:</label>
                             <input type="text" class="form-control" id="document_link" name="document_link" value="{{ old('document_link', $tender->document_link) }}">
+                        </div>
+
+                        <div class="col-md-6 col-sm-12">
+                            <label for="qty">Qty:</label>
+                            <input type="number" class="form-control" id="qty" name="qty" step="0.01" value="{{ old('qty', $tender->qty) }}">
                         </div>
 
                     </div>
