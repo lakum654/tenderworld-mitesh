@@ -65,6 +65,17 @@
                 <div class="col-md-3">
                     <div class="border p-3 mb-4">
                         <h5>Filters By:</h5>
+
+                        <div class="mb-3">
+                            <label for="tender_type" class="form-label">Tender Type</label>
+                            <select class="form-control" id="tender_type">
+                                <option>Select Type</option>
+                                @foreach ($tenderTypes as $key => $value)
+                                    <option value="{{ $value }}">{{ $value }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
                         <div class="mb-3">
                             <label for="t18RefNo" class="form-label">Ref No</label>
                             <input type="text" class="form-control" id="t18RefNo" placeholder="Enter Ref No...">
@@ -123,7 +134,7 @@
             fetchTenders();
 
             // Trigger fetchTenders when any filter input changes
-            $('#searchQuery, #t18RefNo, #keyword, #state,#city,#department').on('input change', function() {
+            $('#searchQuery, #t18RefNo, #keyword, #state,#city,#department,#tender_type').on('input change', function() {
                 fetchTenders();
             });
 
@@ -145,7 +156,8 @@
                     keyword: $('#keyword').val(),
                     state: $('#state').val(),
                     city: $('#city').val(),
-                    department: $('#department').val()
+                    department: $('#department').val(),
+                    tender_type: $('#tender_type').val()
                 },
                 success: function(response) {
                     renderTenders(response.data);
@@ -162,6 +174,7 @@
                 tenders.forEach(tender => {
                     // Destructure the tender object for better readability
                     const {
+                        tender_type,
                         qty,
                         tender_id,
                         city,
@@ -195,7 +208,8 @@
                                     })
                                     : 'No Date Available'}<br>
                                 <strong>Tender Value:</strong> ${tender_value ?? 'Refer Document'}<br>
-                                <strong>Qty:</strong> ${qty}
+                                <strong>Qty:</strong> ${qty}<br>
+                                <strong>Tender Type:</strong> ${tender_type}
                             </p>
                             <a href="tender/${id}" class="btn btn-outline-danger">View Documents</a>
                         </div>

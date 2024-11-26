@@ -15,6 +15,7 @@ class AddColumnToTenderTable extends Migration
     {
         Schema::table('tenders', function (Blueprint $table) {
             $table->bigInteger('qty')->default(0);
+            $table->string('tender_type')->nullable();
         });
     }
 
@@ -26,7 +27,7 @@ class AddColumnToTenderTable extends Migration
     public function down()
     {
         Schema::table('tenders', function (Blueprint $table) {
-            $table->dropColumn('qty');
+            $table->dropColumn(['qty','tender_type']);
         });
     }
 }

@@ -141,6 +141,11 @@
                             <input type="number" class="form-control" id="qty" name="qty" step="0.01" value="{{ old('qty', $tender->qty) }}">
                         </div>
 
+                        <div class="col-md-6 col-sm-12">
+                            <label for="tender_type">Tender Type:</label>
+                            <input type="text" class="form-control" id="tender_type" name="tender_type" value="{{ old('tender_type', $tender->tender_type) }}">
+                        </div>
+
                     </div>
                 </div>
 

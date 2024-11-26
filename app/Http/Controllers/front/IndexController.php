@@ -35,7 +35,8 @@ class IndexController extends Controller
         $tenders = Tender::paginate(3);
         $states = State::get();
         $cities = City::get();
-        return view('user.tender', compact('tenders','states','cities'));
+        $tenderTypes = array_unique(array_filter(Tender::pluck('tender_type')->toArray()));
+        return view('user.tender', compact('tenders','states','cities','tenderTypes'));
     }
 
     public function fetchTenders(Request $request)
@@ -75,6 +76,10 @@ class IndexController extends Controller
 
         if ($request->has('city') && $request->input('city') != '' && $request->input('city') != 'Select City') {
             $query->where('city', $request->input('city'));
+        }
+
+        if ($request->has('tender_type') && $request->input('tender_type') != '' && $request->input('tender_type') != 'Select Type') {
+            $query->where('tender_type', $request->input('tender_type'));
         }
 
         // Paginate the results (3 items per page)
