@@ -54,7 +54,7 @@
     <!-- ======= Hero Section ======= -->
     <div class="hero-section position-relative">
         <!-- Background Image -->
-        <img src="{{ asset('public/assets/img/tworld/header.jpg') }}" class="hero-bg" alt="Hero Background">
+        <img src="{{ asset('public/assets/img/tworld/home-banner.jpg') }}" class="hero-bg" alt="Hero Background">
 
         <!-- Search Box -->
         @if (Route::is('home'))

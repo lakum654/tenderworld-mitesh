@@ -7,9 +7,9 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>@yield('title', 'Tenders World - Home')</title>
-    <meta content="Tender World Service" name="description">
-    <meta content="Tender,World,Gujarat,Services" name="keywords">
+    <title>@yield('title', 'UniqueTenders')</title>
+    <meta content="Uniqe Tenders,Tender World Service" name="description">
+    <meta content="Uniqe Tenders,Tender,World,Gujarat,Services" name="keywords">
 
     @include('user.layouts.headerscript')
     @stack('css')
@@ -51,7 +51,7 @@
     <div id="preloader"></div>
 
     @include('user.register')
-    @include('user.login');
+    @include('user.login')
     @include('user.layouts.footerscript')
 
 
