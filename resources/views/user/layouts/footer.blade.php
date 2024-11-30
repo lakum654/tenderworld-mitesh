@@ -17,14 +17,10 @@
                     <h4>Contact Us</h4>
                     <p>
                         <strong></strong><p></p>
-                        <strong>Phone&nbsp;:</strong><p>+91 7600607105,
-                            +91 7600607246</p>
-                        <strong>Email&nbsp;:</strong><p>
-                            sales.tendersworld@gmail.com
-                            support.tendersworld@gmail.com</p>
+                        <strong>Phone&nbsp;:</strong><p>+91 8866002529,+91 9016209954</p>
+                        <strong>Email&nbsp;:</strong><p>uniquesolution317@gmail.com</p>
                         <strong>Address&nbsp;:</strong><br /><p>
-                            607, DEV PRIME, Corporate Rd, near
-                        Sarkhej - Gandhinagar Highway, Makarba, Ahmedabad, Gujarat 380051
+                            C/317,SUMEL BUSINESS PARK-7,NEAR SONI NI CHALI,N.H. ,RAKHIAL,AHMEDABAD, 380023 GUJARAT
                         </p>
                     </p>
                 </div>

@@ -10,11 +10,22 @@
 
 /* Colors */
 :root {
-  --color-default: #212529;
-  --color-primary: #ce1212;
-  --color-secondary: #37373f;
-}
+    --color-default: #1e1e2f; /* Deep indigo-gray for a unique neutral background or text */
+    --color-primary: #ff6f61; /* Warm coral for a standout primary action color */
+    --color-secondary: #4caf50; /* Vibrant green for secondary elements, symbolizing balance and growth */
+  }
 
+  .bg-primary {
+    background: var(--color-primary) !important;
+  }
+
+  .text-primary-second {
+    color: var(--color-primary) !important;
+  }
+
+  .btn-bg-primary {
+    background: var(--color-primary) !important;
+  }
 /* Smooth scroll behavior */
 :root {
   scroll-behavior: smooth;
@@ -29,12 +40,12 @@ body {
 }
 
 a {
-  color: var(--color-primary);
+  color: #fff;
   text-decoration: none;
 }
 
 a:hover {
-  color: #ec2727;
+  color: var(--color-primary);
   text-decoration: none;
 }
 
@@ -236,7 +247,8 @@ section {
 # Header
 --------------------------------------------------------------*/
 .header {
-  background: #fff;
+  /* background: #fff; */
+  background: linear-gradient(#00093c, #2d0b00);
   transition: all 0.5s;
   z-index: 997;
   height: 90px;
@@ -364,7 +376,7 @@ section {
   .navbar .active,
   .navbar .active:focus,
   .navbar li:hover>a {
-    color: #000;
+    color: #fff;
   }
 
   .navbar .dropdown ul {

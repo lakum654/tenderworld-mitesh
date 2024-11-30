@@ -3,7 +3,7 @@
     <div class="container d-flex align-items-center justify-content-between">
 
         <a href="{{ route('home') }}" class="logo d-flex align-items-center me-auto me-lg-0">
-            <img src="{{ asset('public/assets/img/tworld/logo-width-bg.png') }}" height="100%" width="100%">
+            <img src="{{ asset('public/assets/img/tworld/main-logo.png') }}" height="100%" width="100%">
         </a>
 
         <nav id="navbar" class="navbar">

@@ -191,7 +191,7 @@
                 <div class="col-md-12 col-lg-12 mb-4">
                     <div class="card border-0 shadow">
                         <!-- Card Header -->
-                        <div class="card-header bg-danger text-white d-flex justify-content-between">
+                        <div class="card-header bg-primary text-white d-flex justify-content-between">
                             <strong>Ref No: ${tender_id || 'N/A'}</strong>
                             <span>Location: ${city || 'Unknown'}, ${state || 'Unknown'}</span>
                         </div>
@@ -238,7 +238,7 @@
             if (data.prev_page_url) {
                 html += `
             <li class="page-item">
-                <a class="page-link text-danger" href="javascript:void(0)" onclick="fetchTenders(${data.current_page - 1})" aria-label="Previous">
+                <a class="page-link text-primary-second" href="javascript:void(0)" onclick="fetchTenders(${data.current_page - 1})" aria-label="Previous">
                     <span aria-hidden="true">&laquo;</span> Previous
                 </a>
             </li>`;
@@ -246,7 +246,7 @@
                 // Disabled "Previous" button if there is no previous page
                 html += `
             <li class="page-item disabled">
-                <a class="page-link text-danger" href="javascript:void(0)" tabindex="-1" aria-disabled="true">
+                <a class="page-link text-primary-second" href="javascript:void(0)" tabindex="-1" aria-disabled="true">
                     <span aria-hidden="true">&laquo;</span> Previous
                 </a>
             </li>`;
@@ -255,14 +255,14 @@
             // Show the current page and total pages information as text, styled for clarity
             html += `
                 <li class="page-item disabled">
-                    <span class="page-link text-danger">Page ${data.current_page} of ${data.last_page}</span>
+                    <span class="page-link text-primary-second">Page ${data.current_page} of ${data.last_page}</span>
                 </li>`;
 
             // Show "Next" button if there is a next page
             if (data.next_page_url) {
                 html += `
             <li class="page-item">
-                <a class="page-link text-danger" href="javascript:void(0)" onclick="fetchTenders(${data.current_page + 1})" aria-label="Next">
+                <a class="page-link text-primary-second" href="javascript:void(0)" onclick="fetchTenders(${data.current_page + 1})" aria-label="Next">
                     Next <span aria-hidden="true">&raquo;</span>
                 </a>
             </li>`;
@@ -270,7 +270,7 @@
                 // Disabled "Next" button if there is no next page
                 html += `
             <li class="page-item disabled">
-                <a class="page-link text-danger" href="javascript:void(0)" tabindex="-1" aria-disabled="true">
+                <a class="page-link text-primary-second" href="javascript:void(0)" tabindex="-1" aria-disabled="true">
                     Next <span aria-hidden="true">&raquo;</span>
                 </a>
             </li>`;

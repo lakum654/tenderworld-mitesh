@@ -23,7 +23,7 @@
             <div class="row mb-4">
                 <div class="col-lg-8">
                     <div class="card mb-3">
-                        <div class="card-header bg-danger text-white">
+                        <div class="card-header bg-primary text-white">
                             <strong>Tender Basic Details</strong>
                         </div>
                         <div class="card-body">
@@ -39,7 +39,7 @@
 
                     <!-- Key Values and Dates -->
                     <div class="card mb-3">
-                        <div class="card-header bg-danger text-white">
+                        <div class="card-header bg-primary text-white">
                             <strong>Key Values and Dates</strong>
                         </div>
                         <div class="card-body">
@@ -57,7 +57,7 @@
 
                     <!-- Tender Documents -->
                     <div class="card mb-3">
-                        <div class="card-header bg-danger text-white">
+                        <div class="card-header bg-primary text-white">
                             <strong>Tender Documents</strong>
                         </div>
                         <div class="card-body text-center">
@@ -97,7 +97,7 @@
 
                     <!-- Disclaimer -->
                     <div class="card">
-                        <div class="card-header bg-danger text-white">
+                        <div class="card-header bg-primary text-white">
                             <strong>Disclaimer</strong>
                         </div>
                         <div class="card-body">
@@ -111,7 +111,7 @@
                 <!-- Tender Inquiry Form -->
                 <div class="col-lg-4">
                     <div class="card">
-                        <div class="card-header bg-danger text-white">
+                        <div class="card-header bg-primary text-white">
                             <strong>Tender Inquiry</strong>
                         </div>
                         <div class="card-body">
