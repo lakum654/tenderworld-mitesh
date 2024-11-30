@@ -1,5 +1,5 @@
 @extends('user.layouts.master')
-@section('title','Tenders World - Certificates')
+@section('title','Unique Tenders - Certificates')
 
 @section('hero')
     <!-- ======= Hero Section ======= -->

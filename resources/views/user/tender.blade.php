@@ -1,5 +1,5 @@
 @extends('user.layouts.master')
-@section('title', 'Tenders World - Services')
+@section('title', 'Unique Tenders - Services')
 
 @section('css')
     <style>

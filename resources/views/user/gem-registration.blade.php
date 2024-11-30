@@ -1,5 +1,5 @@
 @extends('user.layouts.master')
-@section('title','Tenders World - Gen Registration')
+@section('title','Unique Tenders - Gen Registration')
 
 
 @section('hero')

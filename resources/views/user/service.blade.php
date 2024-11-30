@@ -1,5 +1,5 @@
 @extends('user.layouts.master')
-@section('title','Tenders World - Services')
+@section('title','Unique Tenders - Services')
 
 @section('hero')
     <!-- ======= Hero Section ======= -->
@@ -18,7 +18,7 @@
 
             <div class="section-header">
                 <h2>TENDERS SERVICES</h2>
-                <p style="font-size: 30px;">TENDERS WORLD - <span>Unlocking Opportunities through Exceptional Tender Services</span></p>
+                <p style="font-size: 30px;">Unique Tenders - <span>Unlocking Opportunities through Exceptional Tender Services</span></p>
             </div>
 
             <div class="row gy-4">
