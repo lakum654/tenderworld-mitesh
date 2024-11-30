@@ -3,10 +3,7 @@
     <div class="container d-flex align-items-center justify-content-between">
 
         <a href="{{ route('home') }}" class="logo d-flex align-items-center me-auto me-lg-0">
-            <!-- Uncomment the line below if you also wish to use an image logo -->
-            <!-- <img src="{{ 'public/assets/img/logo.png' }}" alt=""> -->
-            <img src="{{ asset('public/assets/img/tworld/logo-remove-bg.png') }}">
-            <h1><span style="color: blue;">Tenders</span>&nbsp;<span>World</span></h1>
+            <img src="{{ asset('public/assets/img/tworld/logo-width-bg.png') }}" height="100%" width="100%">
         </a>
 
         <nav id="navbar" class="navbar">

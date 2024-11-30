@@ -15,8 +15,8 @@ class CreateSettingsTable extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
-            $table->string('logo')->default('logo-remove-bg.png');
-            $table->string('favicon')->default('logo-remove-bg.png');
+            $table->string('logo')->default('logo-width-bg.png');
+            $table->string('favicon')->default('logo-width-bg.png');
             $table->text('phone')->nullable();
             $table->text('email')->nullable();
             $table->text('address')->nullable();

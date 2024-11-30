@@ -1,5 +1,5 @@
 <!-- Favicons -->
-<link href="{{ asset('public/assets/img/tworld/logo-remove-bg.png') }}" rel="icon">
+<link href="{{ asset('public/assets/img/tworld/logo-width-bg.png') }}" rel="icon">
 <link href="{{ asset('public/assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
 <!-- Google Fonts -->

@@ -13,6 +13,6 @@ class SettingSeeder extends Seeder
      */
     public function run()
     {
-        Setting::updateOrCreate(['id' => 1],['logo' => 'logo-remove-bg.png','favicon' => 'logo-remove-bg.png']);
+        Setting::updateOrCreate(['id' => 1],['logo' => 'logo-width-bg.png','favicon' => 'logo-width-bg.png']);
     }
 }
