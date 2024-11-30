@@ -325,8 +325,9 @@ section {
     padding: 0 3px;
     font-family: var(--font-secondary);
     font-size: 16px;
-    font-weight: 600;
-    color: #7f7f90;
+    font-weight: 400;
+    /* color: #7f7f90; */
+    color: linear-gradient(#00093c, #2d0b00);
     white-space: nowrap;
     transition: 0.3s;
     position: relative;
@@ -1557,13 +1558,24 @@ section {
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
-.footer {
+/* .footer {
   font-size: 14px;
   background-color: #1f1f24;
   padding: 50px 0;
   color: rgba(255, 255, 255, 0.7);
-}
+} */
 
+.footer{
+    width: 100%;
+    /* position: absolute; */
+    bottom: 0;
+    background: linear-gradient(#00093c, #2d0b00);
+    color: #fff;
+    padding: 100px 0 30px;
+    /* border-top-left-radius: 125px;
+    border-top-right-radius: 125px; */
+    line-height: 20px;
+}
 .footer .icon {
   margin-right: 15px;
   font-size: 24px;
@@ -1580,6 +1592,7 @@ section {
 
 .footer .footer-links {
   margin-bottom: 30px;
+  font-family: var(--font-secondary);
 }
 
 .footer .footer-links ul {
@@ -1592,6 +1605,7 @@ section {
   padding: 10px 0;
   display: flex;
   align-items: center;
+  margin-bottom: 10px;
 }
 
 .footer .footer-links ul li:first-child {
