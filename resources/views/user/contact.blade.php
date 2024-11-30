@@ -33,7 +33,7 @@
                     <i class="icon bi bi-map flex-shrink-0"></i>
                     <div>
                         <h3>Our Address</h3>
-                        <p>607, Dev Prime, Corporate Road, Makarba, Sg Highway, Ahmedabad, Gujarat - 380051</p>
+                        <p>C/317,SUMEL BUSINESS PARK-7, NEAR SONI NI CHALI, N.H. ,RAKHIAL,AHMEDABAD, 380023 GUJARAT</p>
                     </div>
                 </div>
             </div><!-- End Info Item -->
@@ -43,7 +43,7 @@
                     <i class="icon bi bi-envelope flex-shrink-0"></i>
                     <div>
                         <h3>Email Us</h3>
-                        <p><b>sales.tendersworld@gmail.com</b> & <b>support.tendersworld@gmail.com</b></p>
+                        <p><b>uniquesolution317@gmail.com</b></p>
                     </div>
                 </div>
             </div><!-- End Info Item -->
@@ -53,7 +53,7 @@
                     <i class="icon bi bi-telephone flex-shrink-0"></i>
                     <div>
                         <h3>Call Us</h3>
-                        <p><b>+91 7600607105</b> & <b>+91 7600607246</b></p>
+                        <p><b>+91 8866002529</b> & <b>+91 9016209954</b></p>
                     </div>
                 </div>
             </div><!-- End Info Item -->
