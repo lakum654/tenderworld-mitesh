@@ -3,8 +3,8 @@
     <div class="container">
         <div class="row gy-3">
             <div class="col-lg-2 col-md-6 d-flex">
-                <div>
-                    <img src="{{ asset('public/assets/img/tworld/main-logo.png') }}" width="50%">
+                <div class="logo">
+                    <img src="{{ asset('public/assets/img/tworld/main-logo.png') }}" width="100%">
                     {{-- <h3><span style="color: white;">Tenders</span>&nbsp;<span style="color: red;">World</span>
                     </h3> --}}
                 </div>

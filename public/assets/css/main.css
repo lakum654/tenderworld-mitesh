@@ -267,9 +267,14 @@ section {
 }
 
 .header .logo img {
-  max-height: 40px;
+  max-height: 78px !important;
   margin-right: 6px;
 }
+
+.footer .logo img {
+    max-height: 78px !important;
+    margin-right: 6px;
+  }
 
 .header .logo h1 {
   font-size: 28px;
