@@ -1,55 +1,74 @@
 @extends('user.layouts.master')
 
 @push('css')
-    <style>
-        .hero-section {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-            /* Keeps content inside the container */
-        }
+<style>
+    .hero-section {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+    }
 
-        .hero-section .hero-bg {
-            width: 100%;
-            height: auto;
-            /* Maintain the original aspect ratio of the image */
-            position: relative;
-            /* Make sure it remains in normal document flow */
-            z-index: 1;
-        }
+    .hero-section .hero-bg {
+        width: 100%;
+        height: auto;
+        object-fit: cover; /* Ensures image fits the container nicely */
+        position: relative;
+        z-index: 1;
+    }
 
-        .search-container {
-            position: absolute;
-            top: 50%;
-            /* Center vertically within the hero section */
-            left: 50%;
-            /* Center horizontally within the hero section */
-            transform: translate(-50%, -50%);
-            z-index: 2;
-            /* Ensure the search box is above the image */
-            text-align: center;
-            /* Center-align content */
-        }
+    .search-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        text-align: center;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.8); /* Subtle translucent background */
+        border-radius: 12px; /* Rounded edges for a modern look */
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Add a soft shadow for emphasis */
+        max-width: 600px; /* Limit the container width */
+        width: 90%; /* Make it responsive */
+    }
 
-        .search-container form input {
-            width: 500px;
-            /* Explicitly increase the width */
-            max-width: 100%;
-            /* Ensure responsiveness */
-            padding: 10px;
-            /* Add padding for better usability */
-            font-size: 16px;
-            /* Improve readability */
-        }
+    .search-container form {
+        display: flex;
+        gap: 10px; /* Add spacing between input and button */
+    }
 
-        .search-container form button {
-            height: 45px;
-            /* Match button height to input field */
-            font-size: 16px;
-            /* Improve button text size */
-        }
-    </style>
+    .search-container form input {
+        flex-grow: 1; /* Allow the input to expand */
+        padding: 12px 15px;
+        font-size: 18px; /* Slightly larger text for better readability */
+        border: 2px solid #ff6f61; /* Coral border */
+        border-radius: 8px; /* Rounded corners */
+        outline: none;
+        transition: border-color 0.3s ease;
+    }
+
+    .search-container form input:focus {
+        border-color: #e85d54; /* Slightly darker coral on focus */
+        box-shadow: 0 0 5px rgba(255, 111, 97, 0.5); /* Subtle glow */
+    }
+
+    .search-container form button {
+        padding: 12px 20px;
+        font-size: 18px;
+        font-weight: bold;
+        background-color: #ff6f61; /* Coral button background */
+        color: #fff;
+        border: none;
+        border-radius: 8px; /* Rounded corners */
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .search-container form button:hover {
+        background-color: #e85d54; /* Slightly darker coral on hover */
+    }
+</style>
 @endpush
+
 @section('hero')
     <!-- ======= Hero Section ======= -->
     <div class="hero-section position-relative">

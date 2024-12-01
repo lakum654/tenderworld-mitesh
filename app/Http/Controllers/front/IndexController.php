@@ -117,6 +117,7 @@ class IndexController extends Controller
         $tenders = Tender::where('work','like','%'.$search.'%')->paginate(10);
         $states = State::get();
         $cities = City::get();
-        return view('user.tender', compact('tenders','states','cities'));
+        $tenderTypes = array_unique(array_filter(Tender::pluck('tender_type')->toArray()));
+        return view('user.tender', compact('tenders','states','cities','tenderTypes'));
     }
 }
