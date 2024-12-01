@@ -186,7 +186,7 @@
                         id
                     } = tender;
 
-                    var url = `tender/${id}`;
+                    var url = `/tender/${id}`;
                     // Append each tender's HTML to the variable
                     html += `
                 <div class="col-md-12 col-lg-12 mb-4">
@@ -212,7 +212,7 @@
                                 <strong>Qty:</strong> ${qty}<br>
                                 <strong>Tender Type:</strong> ${tender_type}
                             </p>
-                            <a href=${url.replace('tenders/', '')} class="btn btn-outline-danger">View Documents</a>
+                            <a href=${url} class="btn btn-outline-danger">View Documents</a>
                         </div>
                     </div>
                 </div>
