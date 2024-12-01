@@ -212,7 +212,7 @@
                                 <strong>Qty:</strong> ${qty}<br>
                                 <strong>Tender Type:</strong> ${tender_type}
                             </p>
-                            <a href=${url} class="btn btn-outline-danger">View Documents</a>
+                            <a href=${url} class="btn btn-outline-theme">View Documents</a>
                         </div>
                     </div>
                 </div>

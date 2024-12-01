@@ -26,6 +26,47 @@
   .btn-bg-primary {
     background: var(--color-primary) !important;
   }
+
+  .btn-outline-theme {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ff6f61; /* Coral text */
+    background-color: transparent; /* Transparent background */
+    border: 1px solid #ff6f61; /* Coral border */
+    border-radius: 4px; /* Rounded corners */
+    text-decoration: none; /* Remove underline for links */
+    transition: all 0.3s ease; /* Smooth hover transition */
+}
+
+.btn-outline-theme:hover {
+    color: #fff; /* White text on hover */
+    background-color: #ff6f61; /* Coral background on hover */
+    border-color: #ff6f61; /* Retain coral border */
+    text-decoration: none; /* Keep links clean */
+}
+
+.btn-outline-theme:focus {
+    outline: none; /* Remove default focus outline */
+    box-shadow: 0 0 5px rgba(255, 111, 97, 0.5); /* Coral glow on focus */
+}
+
+.btn-outline-theme:active {
+    color: #fff; /* White text on active */
+    background-color: #e85d54; /* Slightly darker coral for active state */
+    border-color: #e85d54; /* Match border to active background */
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125); /* Inset shadow for pressed effect */
+}
+
+.btn-outline-theme:disabled {
+    color: #ff6f61; /* Coral text */
+    background-color: transparent; /* Transparent background */
+    border-color: #ff6f61; /* Coral border */
+    opacity: 0.6; /* Reduced opacity for disabled state */
+    pointer-events: none; /* Disable interactions */
+}
+
 /* Smooth scroll behavior */
 :root {
   scroll-behavior: smooth;
