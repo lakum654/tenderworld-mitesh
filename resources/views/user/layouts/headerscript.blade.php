@@ -10,15 +10,15 @@
     rel="stylesheet">
 
 <!-- Vendor CSS Files -->
-<link href="{{ asset('public/assets/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
-<link href="{{ asset('public/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-<link href="{{ asset('public/assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
-<link href="{{ asset('public/assets/vendor/aos/aos.css') }}" rel="stylesheet">
-<link href="{{ asset('public/assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
-<link href="{{ asset('public/assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+<link href="{{ asset('public/assets/vendor/fontawesome-free/css/all.min.css?v=21') }}" rel="stylesheet">
+<link href="{{ asset('public/assets/vendor/bootstrap/css/bootstrap.min.css?v=21') }}" rel="stylesheet">
+<link href="{{ asset('public/assets/vendor/bootstrap-icons/bootstrap-icons.css?v=21') }}" rel="stylesheet">
+<link href="{{ asset('public/assets/vendor/aos/aos.css?v=21') }}" rel="stylesheet">
+<link href="{{ asset('public/assets/vendor/glightbox/css/glightbox.min.css?v=21') }}" rel="stylesheet">
+<link href="{{ asset('public/assets/vendor/swiper/swiper-bundle.min.css?v=21') }}" rel="stylesheet">
 
 <!-- Template Main CSS File -->
-<link href="{{ asset('public/assets/css/main.css') }}" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tagify/3.10.2/tagify.min.css"
+<link href="{{ asset('public/assets/css/main.css?v=21') }}" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tagify/3.10.2/tagify.min.css?v=21"
     integrity="sha512-I0AviyNtEnJLGNrBKeG3x5PFLkePKZrtZAXddiMboWQ8N8Bh4EW8wZf7IyBsSjZswFhCyQxV7xnfshUnWdo8AQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
