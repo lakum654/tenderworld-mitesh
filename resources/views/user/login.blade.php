@@ -26,7 +26,7 @@
                     <button type="submit" class="btn btn-danger w-100">Login</button>
                 </form>
                 <div class="text-center mt-3">
-                    <a href="javascript:void(0);" onclick="openRegisterModal()">Don't have an account? Register here</a>
+                    <a href="javascript:void(0);" onclick="openRegisterModal()" style="color:blue;">Don't have an account? Register here</a>
                 </div>
             </div>
         </div>

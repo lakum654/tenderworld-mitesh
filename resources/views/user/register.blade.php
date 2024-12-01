@@ -59,7 +59,7 @@
 
 
                     <div class="text-center mt-3">
-                        <p>If you're already registered, please <a href="javascript:void(0);" onclick="openLoginModal()">sign in here</a>.</p>
+                        <p>If you're already registered, please <a href="javascript:void(0);" onclick="openLoginModal()" style="color:blue;">Sign In here</a>.</p>
                     </div>
 
 

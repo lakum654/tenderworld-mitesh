@@ -26,7 +26,7 @@
                 <div class="col-lg-12 d-flex align-items-end" data-aos="fade-up" data-aos-delay="300">
                     <div class="content ps-0 ps-lg-5">
                         <ul style="font-size: 20px;">
-                            <li><i class="bi bi-check2-all"></i> Welcome to Tendersworld.com, your trusted partner in navigating the competitive landscape of tenders. We specialize in
+                            <li><i class="bi bi-check2-all"></i> Welcome to Uniquetenders.com, your trusted partner in navigating the competitive landscape of tenders. We specialize in
                             delivering comprehensive tender services that empower businesses to secure and excel in procurement opportunities.
                             </li>
                         </ul>
